@@ -1,0 +1,11 @@
+# Project place file
+/RobloxGameTemplate.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+sourcemap.json
+src/shared/replicatedStorage/Packages
+src/shared/serverStorage/Packages
+wally.lock

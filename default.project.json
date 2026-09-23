@@ -1,0 +1,50 @@
+{
+  "name": "RobloxGameTemplate",
+  "tree": {
+    "$className": "DataModel",
+    
+    "ReplicatedStorage": {
+      "src": {
+        "$path": "src/shared/replicatedStorage"
+      }
+    },
+
+    "ReplicatedFirst": {
+      "src": {
+        "$path": "src/shared/replicatedFirst"
+      }
+    },
+
+    "ServerStorage": {
+      "src":{
+        "$path": "src/shared/serverStorage"
+      }
+    },
+
+    "ServerScriptService": {
+      "$path": "src/server"
+    },
+
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "src": {
+          "$path": "src/client/playerScripts"
+        }
+      },
+      "StarterCharacterScripts": {
+        "src": {
+          "$path": "src/client/characterScripts"
+        }
+      }
+    },
+
+    "SoundService": {
+      "$properties": {
+        "RespectFilteringEnabled": true
+      },
+      "src": {
+        "$path": "src/shared/soundService"
+      }
+    }
+  }
+}

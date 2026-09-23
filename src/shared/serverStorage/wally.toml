@@ -1,0 +1,8 @@
+[package]
+name = "acceierate2/robloxgametemplate"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+profileStore = "acceierate2/profile-store@1.1.0"
