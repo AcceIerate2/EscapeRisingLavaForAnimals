@@ -1,0 +1,7 @@
+{
+  "image": "forest-biome.png",
+  "prompt": "forest-biome.prompt.txt",
+  "generationMode": "built-in image_gen",
+  "robloxAsset": "rbxassetid://99470388529655",
+  "studioInstance": "StarterGui.Panels.Index.Collection.Forest.Biome.ForestPreview"
+}

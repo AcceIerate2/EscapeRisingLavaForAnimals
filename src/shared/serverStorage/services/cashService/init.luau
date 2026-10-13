@@ -27,7 +27,7 @@ end
 -- Private Methods
 function CashService:getCashValueObject(player: Player)
 	assert(TypeCheck.Instance(player), "player arg must be a player")
-	return self.DataService:get(player, "Cash")
+	return self.DataService:GetValueObject(player, "Cash")
 end
 
 -- Public Methods

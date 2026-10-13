@@ -1,4 +1,5 @@
 -- Roblox Services
+local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Packages
@@ -57,6 +58,16 @@ function PanelController:WaitForPanelToClose(panelName: string, timeoutSeconds: 
 		task.wait()
 	end
 	return true
+end
+
+-- LifeCycle
+function PanelController:KnitInit()
+	for i, panel in pairs(Players.LocalPlayer.PlayerGui:WaitForChild("Panels"):GetChildren()) do
+		if not panel:IsA("Frame") then
+			continue
+		end
+		panel.Position = UDim2.fromScale(0.5, 1.5)
+	end
 end
 
 return PanelController

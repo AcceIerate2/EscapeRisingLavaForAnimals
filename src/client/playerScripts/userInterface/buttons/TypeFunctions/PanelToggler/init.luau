@@ -12,6 +12,7 @@ local utility = require(ReplicatedStorage.src.UIUtility.utility)
 local InstanceCreator = require(ReplicatedStorage.src.utility.InstanceCreator)
 local TypeCheck = require(ReplicatedStorage.src.utility.TypeCheck)
 local soundHandler = require(ReplicatedStorage.src.utility.soundHandler)
+local Spring = require(ReplicatedStorage.src.utility.Spring)
 
 -- Essentials
 local blur = InstanceCreator("BlurEffect", "Blur", Lighting, {
@@ -26,7 +27,14 @@ local createTween = TweenService.Create
 local CurrentVisiblePanel = nil
 local _TweenInfo = TweenInfo.new(0.15)
 
-local activeTweens: { [GuiObject]: Tween } = {}
+local activeAnimations: { [GuiObject]: {} } = {}
+
+local springConfig = {
+	OpenDamping = 0.68,
+	OpenFrequency = 5.5,
+	CloseDamping = 1,
+	CloseFrequency = 8,
+}
 
 local config = {
 	[true] = UDim2.fromScale(0.5, 1.25),
@@ -34,7 +42,7 @@ local config = {
 }
 
 local sfx = {
-	[true] = nil, -- SoundService:WaitForChild("Sfx"):WaitForChild("UI"):WaitForChild("PanelClose"),
+	[true] = SoundService:WaitForChild("src"):WaitForChild("Sfx"):WaitForChild("UI"):WaitForChild("PanelClose"),
 	[false] = SoundService:WaitForChild("src"):WaitForChild("Sfx"):WaitForChild("UI"):WaitForChild("Panel"),
 }
 
@@ -65,8 +73,24 @@ local function toggleBlur(isCurrentlyVisible)
 	}):Play()
 end
 
+-- Every scrolling list in a panel starts back at the top when it opens.
+local function resetScroll(panel: GuiObject)
+	for _, descendant in panel:GetDescendants() do
+		if descendant:IsA("ScrollingFrame") then
+			descendant.CanvasPosition = Vector2.zero
+		end
+	end
+end
+
 local function animate(panel: GuiObject, isClosing: boolean)
+	if not panel.Visible and not isClosing then
+		panel.Position = config[true]
+	end
 	panel.Visible = true
+
+	if not isClosing then
+		resetScroll(panel)
+	end
 
 	if not isClosing and panel.Name == "Parts" then
 		soundHandler:play(
@@ -81,20 +105,24 @@ local function animate(panel: GuiObject, isClosing: boolean)
 	toggleFov(isClosing)
 	toggleBlur(isClosing)
 
-	if activeTweens[panel] then
-		activeTweens[panel]:Cancel()
-		activeTweens[panel] = nil
-	end
+	local animation = {}
+	activeAnimations[panel] = animation
 
-	local tween = createTween(TweenService, panel, _TweenInfo, {
-		Position = config[isClosing],
-	})
-	activeTweens[panel] = tween
+	-- Retarget the spring so rapid toggles keep their current position and momentum.
+	Spring.target(
+		panel,
+		isClosing and springConfig.CloseDamping or springConfig.OpenDamping,
+		isClosing and springConfig.CloseFrequency or springConfig.OpenFrequency,
+		{
+			Position = config[isClosing],
+		}
+	)
 
-	tween:Play()
-	tween.Completed:Once(function()
-		tween:Destroy()
-		activeTweens[panel] = nil
+	Spring.completed(panel, function()
+		if activeAnimations[panel] ~= animation then
+			return
+		end
+		activeAnimations[panel] = nil
 
 		if isClosing then
 			panel.Visible = false

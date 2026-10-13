@@ -15,7 +15,8 @@ return function(parent)
 	})
 
 	InstanceCreator("UIStroke", "UIStroke", container, {
-		Thickness = 1,
+		StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize,
+		Thickness = 1 / 30,
 		Color = Color3.fromRGB(255, 255, 255),
 	})
 

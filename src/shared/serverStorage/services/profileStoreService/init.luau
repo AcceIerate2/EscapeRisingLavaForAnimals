@@ -31,6 +31,7 @@ function ProfileStoreService:newSession(player: Player)
 
 	if not profile then
 		player:Kick(`Profile load fail - Please rejoin`)
+		return nil
 	end
 
 	profile:AddUserId(player.UserId) -- GDPR Compliance
@@ -44,6 +45,7 @@ function ProfileStoreService:newSession(player: Player)
 
 	if player.Parent ~= Players then
 		profile:EndSession()
+		return nil
 	end
 
 	self.Profiles[player] = profile

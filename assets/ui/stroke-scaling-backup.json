@@ -1,0 +1,2001 @@
+{
+  "plan": [
+    {
+      "before": 25,
+      "path": "Workspace.Model.Part.SurfaceGui.TextLabel.UIStroke",
+      "after": 0.03351206434316354,
+      "kind": "text",
+      "basis": 746
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.Hud.LeftMenu.Shop.Outline",
+      "after": 0.03197688389813907,
+      "kind": "border",
+      "basis": 93.8177719116211
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Hud.LeftMenu.Shop.Inset.Highlight",
+      "after": 0.018168684100192796,
+      "kind": "border",
+      "basis": 82.55963897705078
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Hud.LeftMenu.Shop.Label.TextOutline",
+      "after": 0.05434782608695652,
+      "kind": "text",
+      "basis": 46
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.Hud.LeftMenu.Index.Outline",
+      "after": 0.03197688389813907,
+      "kind": "border",
+      "basis": 93.8177719116211
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Hud.LeftMenu.Index.Inset.Highlight",
+      "after": 0.018168684100192796,
+      "kind": "border",
+      "basis": 82.55963897705078
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Hud.LeftMenu.Index.Label.TextOutline",
+      "after": 0.056818181818181816,
+      "kind": "text",
+      "basis": 44
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.Hud.LeftMenu.SlowMode.Track.Outline",
+      "after": 0.05116301340489271,
+      "kind": "border",
+      "basis": 58.6361083984375
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Hud.LeftMenu.SlowMode.Track.Knob.Outline",
+      "after": 0.043864031942246404,
+      "kind": "border",
+      "basis": 45.59544372558594
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Hud.LeftMenu.SlowMode.Label.TextOutline",
+      "after": 0.10416666666666667,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.Hud.LeftMenu.Rebirth.Outline",
+      "after": 0.03197688389813907,
+      "kind": "border",
+      "basis": 93.8177719116211
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Hud.LeftMenu.Rebirth.Inset.Highlight",
+      "after": 0.018168684100192796,
+      "kind": "border",
+      "basis": 82.55963897705078
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Hud.LeftMenu.Rebirth.Label.TextOutline",
+      "after": 0.0625,
+      "kind": "text",
+      "basis": 40
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.Hud.RightMenu.Eggs.Outline",
+      "after": 0.027831729641178526,
+      "kind": "border",
+      "basis": 107.79064178466797
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Hud.RightMenu.Eggs.Inset.Highlight",
+      "after": 0.01581348249628909,
+      "kind": "border",
+      "basis": 94.85576629638672
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.Hud.RightMenu.Animals.Outline",
+      "after": 0.027831729641178526,
+      "kind": "border",
+      "basis": 107.79064178466797
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Hud.RightMenu.Animals.Inset.Highlight",
+      "after": 0.01581348249628909,
+      "kind": "border",
+      "basis": 94.85576629638672
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Hud.Counters.Speed.Value.TextOutline",
+      "after": 0.038461538461538464,
+      "kind": "text",
+      "basis": 65
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.Hud.Counters.Speed.UpgradeSpeed.Outline",
+      "after": 0.058697650360893014,
+      "kind": "border",
+      "basis": 51.109371185302734
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Hud.Counters.Speed.UpgradeSpeed.Inset.Highlight",
+      "after": 0.03335093827079029,
+      "kind": "border",
+      "basis": 44.97624588012695
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Hud.Counters.Speed.UpgradeSpeed.Symbol.TextOutline",
+      "after": 0.08620689655172414,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Hud.Counters.Cash.Value.TextOutline",
+      "after": 0.038461538461538464,
+      "kind": "text",
+      "basis": 65
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Hud.EventTimer.Time.TextOutline",
+      "after": 0.056250000993410744,
+      "kind": "text",
+      "basis": 48
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Hud.BiomeBanner.BiomeName.TextOutline",
+      "after": 0.038461538461538464,
+      "kind": "text",
+      "basis": 65
+    },
+    {
+      "before": 4,
+      "path": "StarterGui.Panels.Index.Outline",
+      "after": 0.006741429714711286,
+      "kind": "border",
+      "basis": 593.345947265625
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Header.Outline",
+      "after": 0.022030816283326732,
+      "kind": "border",
+      "basis": 90.78192901611328
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Index.Header.Title.TextOutline",
+      "after": 0.032857142175946916,
+      "kind": "text",
+      "basis": 70
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Header.Close.Outline",
+      "after": 0.034423151165936125,
+      "kind": "border",
+      "basis": 72.62554168701172
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Index.Header.Close.Symbol.TextOutline",
+      "after": 0.0370967734244562,
+      "kind": "text",
+      "basis": 62
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Index.Header.Close.Inset.Outline",
+      "after": 0.01564688689360733,
+      "kind": "border",
+      "basis": 63.91047668457031
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.SelectedPet.Outline",
+      "after": 0.007327640666527276,
+      "kind": "border",
+      "basis": 272.93914794921875
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.SelectedPet.PetName.TextOutline",
+      "after": 0.06578947368421052,
+      "kind": "text",
+      "basis": 38
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.SelectedPet.Rarity.TextOutline",
+      "after": 0.08928571428571429,
+      "kind": "text",
+      "basis": 28
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.SelectedPet.CashPerSecond.TextOutline",
+      "after": 0.08064516129032258,
+      "kind": "text",
+      "basis": 31
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Rewards.Outline",
+      "after": 0.011015408141663366,
+      "kind": "border",
+      "basis": 181.56385803222656
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Rewards.Title.TextOutline",
+      "after": 0.10869565217391304,
+      "kind": "text",
+      "basis": 23
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Panels.Index.Rewards.Cash.Outline",
+      "after": 0.021604377312678662,
+      "kind": "border",
+      "basis": 69.43037414550781
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Rewards.Cash.Value.TextOutline",
+      "after": 0.1388888888888889,
+      "kind": "text",
+      "basis": 18
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Panels.Index.Rewards.Speed.Outline",
+      "after": 0.021604377312678662,
+      "kind": "border",
+      "basis": 69.43037414550781
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Rewards.Speed.Value.TextOutline",
+      "after": 0.1388888888888889,
+      "kind": "text",
+      "basis": 18
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Rewards.Claim.Outline",
+      "after": 0.04172502839563395,
+      "kind": "border",
+      "basis": 59.91607666015625
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Index.Rewards.Claim.Label.TextOutline",
+      "after": 0.0560975598125923,
+      "kind": "text",
+      "basis": 41
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Index.Rewards.Claim.Inset.Outline",
+      "after": 0.018965922272449483,
+      "kind": "border",
+      "basis": 52.72614669799805
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Outline",
+      "after": 0.005237056393290661,
+      "kind": "border",
+      "basis": 381.8939208984375
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Biome.BiomeName.TextOutline",
+      "after": 0.0625,
+      "kind": "text",
+      "basis": 40
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet1.Outline",
+      "after": 0.016206905121870185,
+      "kind": "border",
+      "basis": 123.40419006347656
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet1.PetName.TextOutline",
+      "after": 0.10416666666666667,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet2.Outline",
+      "after": 0.016206905121870185,
+      "kind": "border",
+      "basis": 123.40419006347656
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet2.PetName.TextOutline",
+      "after": 0.10416666666666667,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet3.Outline",
+      "after": 0.016206905121870185,
+      "kind": "border",
+      "basis": 123.40419006347656
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet3.PetName.TextOutline",
+      "after": 0.10416666666666667,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet4.Outline",
+      "after": 0.016206905121870185,
+      "kind": "border",
+      "basis": 123.40419006347656
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet4.PetName.TextOutline",
+      "after": 0.15625,
+      "kind": "text",
+      "basis": 16
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet5.Outline",
+      "after": 0.016206905121870185,
+      "kind": "border",
+      "basis": 123.40419006347656
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet5.PetName.TextOutline",
+      "after": 0.10416666666666667,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet6.Outline",
+      "after": 0.016206905121870185,
+      "kind": "border",
+      "basis": 123.40419006347656
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet6.PetName.TextOutline",
+      "after": 0.10416666666666667,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet7.Outline",
+      "after": 0.016206905121870185,
+      "kind": "border",
+      "basis": 123.40419006347656
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet7.PetName.TextOutline",
+      "after": 0.10416666666666667,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet8.Outline",
+      "after": 0.016206905121870185,
+      "kind": "border",
+      "basis": 123.40419006347656
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.Pets.Pet8.PetName.TextOutline",
+      "after": 0.10416666666666667,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Index.Collection.Forest.BiomeProgress.Outline",
+      "after": 0.029587889895541016,
+      "kind": "border",
+      "basis": 67.59522247314453
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.Collection.Forest.BiomeProgress.Count.TextOutline",
+      "after": 0.038461538461538464,
+      "kind": "text",
+      "basis": 65
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.TotalProgress.Outline",
+      "after": 0.03243489043177661,
+      "kind": "border",
+      "basis": 77.0774917602539
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Index.TotalProgress.Count.TextOutline",
+      "after": 0.03787878787878788,
+      "kind": "text",
+      "basis": 66
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Index.TotalProgress.Inset.Outline",
+      "after": 0.014743133473769838,
+      "kind": "border",
+      "basis": 67.82818603515625
+    },
+    {
+      "before": 4,
+      "path": "StarterGui.Panels.Rebirth.Outline",
+      "after": 0.0061831449107601875,
+      "kind": "border",
+      "basis": 646.9199829101562
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Rebirth.Header.Outline",
+      "after": 0.020206356989096796,
+      "kind": "border",
+      "basis": 98.97875213623047
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Rebirth.Header.Title.TextOutline",
+      "after": 0.032857142175946916,
+      "kind": "text",
+      "basis": 70
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Rebirth.Header.Close.Outline",
+      "after": 0.03157243097023464,
+      "kind": "border",
+      "basis": 79.1830062866211
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Rebirth.Header.Close.Label.TextOutline",
+      "after": 0.03382352871053359,
+      "kind": "text",
+      "basis": 68
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Rebirth.Header.Close.Inset.Outline",
+      "after": 0.01435110498647029,
+      "kind": "border",
+      "basis": 69.68104553222656
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Rebirth.Content.Outline",
+      "after": 0.003963554602567106,
+      "kind": "border",
+      "basis": 504.5975646972656
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Rebirth.Content.Current.Outline",
+      "after": 0.008523773499604318,
+      "kind": "border",
+      "basis": 234.6378631591797
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Rebirth.Content.Current.Tier.TextOutline",
+      "after": 0.06428571542104085,
+      "kind": "text",
+      "basis": 42
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Panels.Rebirth.Content.Current.Boost.Outline",
+      "after": 0.02458780983241013,
+      "kind": "border",
+      "basis": 61.00584030151367
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Rebirth.Content.Current.Boost.Multiplier.TextOutline",
+      "after": 0.051923077840071455,
+      "kind": "text",
+      "basis": 52
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Rebirth.Content.Next.Outline",
+      "after": 0.008523773499604318,
+      "kind": "border",
+      "basis": 234.6378631591797
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Rebirth.Content.Next.Tier.TextOutline",
+      "after": 0.06428571542104085,
+      "kind": "text",
+      "basis": 42
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Panels.Rebirth.Content.Next.Boost.Outline",
+      "after": 0.02458780983241013,
+      "kind": "border",
+      "basis": 61.00584030151367
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Rebirth.Content.Next.Boost.Multiplier.TextOutline",
+      "after": 0.051923077840071455,
+      "kind": "text",
+      "basis": 52
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Rebirth.Content.ResetWarning.TextOutline",
+      "after": 0.08437500149011612,
+      "kind": "text",
+      "basis": 32
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Rebirth.Content.SpeedRequirement.Outline",
+      "after": 0.036699578091489785,
+      "kind": "border",
+      "basis": 68.12067413330078
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Rebirth.Content.SpeedRequirement.Value.TextOutline",
+      "after": 0.05400000095367432,
+      "kind": "text",
+      "basis": 50
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.Rebirth.Outline",
+      "after": 0.02752468279793844,
+      "kind": "border",
+      "basis": 90.82756805419922
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.Rebirth.Label.TextOutline",
+      "after": 0.038333332538604735,
+      "kind": "text",
+      "basis": 60
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.Rebirth.Inset.Outline",
+      "after": 0.012511219310300326,
+      "kind": "border",
+      "basis": 79.92826080322266
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.SkipRebirth.Outline",
+      "after": 0.02752468279793844,
+      "kind": "border",
+      "basis": 90.82756805419922
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.SkipRebirth.Label.TextOutline",
+      "after": 0.057499998807907106,
+      "kind": "text",
+      "basis": 40
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.SkipRebirth.Subtitle.TextOutline",
+      "after": 0.10952380725315639,
+      "kind": "text",
+      "basis": 21
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.SkipRebirth.Inset.Outline",
+      "after": 0.012511219310300326,
+      "kind": "border",
+      "basis": 79.92826080322266
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.Gift.Outline",
+      "after": 0.02752468279793844,
+      "kind": "border",
+      "basis": 90.82756805419922
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.Gift.Label.TextOutline",
+      "after": 0.08518518341912164,
+      "kind": "text",
+      "basis": 27
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Rebirth.Content.Actions.Gift.Inset.Outline",
+      "after": 0.012511219310300326,
+      "kind": "border",
+      "basis": 79.92826080322266
+    },
+    {
+      "before": 4,
+      "path": "StarterGui.Panels.Trails.Outline",
+      "after": 0.006741429714711286,
+      "kind": "border",
+      "basis": 593.345947265625
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Trails.Header.Outline",
+      "after": 0.022030816283326732,
+      "kind": "border",
+      "basis": 90.78192901611328
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Trails.Header.Title.TextOutline",
+      "after": 0.032857142175946916,
+      "kind": "text",
+      "basis": 70
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Trails.Header.Close.Outline",
+      "after": 0.034423151165936125,
+      "kind": "border",
+      "basis": 72.62554168701172
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Trails.Header.Close.Label.TextOutline",
+      "after": 0.0370967734244562,
+      "kind": "text",
+      "basis": 62
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Trails.Header.Close.Inset.Outline",
+      "after": 0.01564688689360733,
+      "kind": "border",
+      "basis": 63.91047668457031
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail1.Outline",
+      "after": 0.006208591665446946,
+      "kind": "border",
+      "basis": 322.1342468261719
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail1.TrailName.TextOutline",
+      "after": 0.06585365969960283,
+      "kind": "text",
+      "basis": 41
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail1.Rarity.TextOutline",
+      "after": 0.09642857313156128,
+      "kind": "text",
+      "basis": 28
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail1.Multiplier.Outline",
+      "after": 0.02985479407332045,
+      "kind": "border",
+      "basis": 50.243186950683594
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail1.Multiplier.Value.TextOutline",
+      "after": 0.06279069878334223,
+      "kind": "text",
+      "basis": 43
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail1.Action.Outline",
+      "after": 0.05449684632431511,
+      "kind": "border",
+      "basis": 45.87421417236328
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail1.Action.Label.TextOutline",
+      "after": 0.057499998807907106,
+      "kind": "text",
+      "basis": 40
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail1.Action.Inset.Outline",
+      "after": 0.024771293783779597,
+      "kind": "border",
+      "basis": 40.36930847167969
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.Outline",
+      "after": 0.006208591665446946,
+      "kind": "border",
+      "basis": 322.1342468261719
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.TrailName.TextOutline",
+      "after": 0.06585365969960283,
+      "kind": "text",
+      "basis": 41
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.Rarity.TextOutline",
+      "after": 0.09642857313156128,
+      "kind": "text",
+      "basis": 28
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.Multiplier.Outline",
+      "after": 0.02985479407332045,
+      "kind": "border",
+      "basis": 50.243186950683594
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.Multiplier.Value.TextOutline",
+      "after": 0.06279069878334223,
+      "kind": "text",
+      "basis": 43
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.BuyCash.Outline",
+      "after": 0.05449684632431511,
+      "kind": "border",
+      "basis": 45.87421417236328
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.BuyCash.Label.TextOutline",
+      "after": 0.057499998807907106,
+      "kind": "text",
+      "basis": 40
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.BuyCash.Inset.Outline",
+      "after": 0.024771293783779597,
+      "kind": "border",
+      "basis": 40.36930847167969
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.BuyRobux.Outline",
+      "after": 0.05449684632431511,
+      "kind": "border",
+      "basis": 45.87421417236328
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.BuyRobux.Label.TextOutline",
+      "after": 0.06388888756434123,
+      "kind": "text",
+      "basis": 36
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail2.BuyRobux.Inset.Outline",
+      "after": 0.024771293783779597,
+      "kind": "border",
+      "basis": 40.36930847167969
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail3.Outline",
+      "after": 0.006208591665446946,
+      "kind": "border",
+      "basis": 322.1342468261719
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail3.TrailName.TextOutline",
+      "after": 0.06585365969960283,
+      "kind": "text",
+      "basis": 41
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail3.Rarity.TextOutline",
+      "after": 0.09642857313156128,
+      "kind": "text",
+      "basis": 28
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail3.Multiplier.Outline",
+      "after": 0.02985479407332045,
+      "kind": "border",
+      "basis": 50.243186950683594
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail3.Multiplier.Value.TextOutline",
+      "after": 0.06279069878334223,
+      "kind": "text",
+      "basis": 43
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail3.Action.Outline",
+      "after": 0.05449684632431511,
+      "kind": "border",
+      "basis": 45.87421417236328
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail3.Action.Label.TextOutline",
+      "after": 0.057499998807907106,
+      "kind": "text",
+      "basis": 40
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail3.Action.Inset.Outline",
+      "after": 0.024771293783779597,
+      "kind": "border",
+      "basis": 40.36930847167969
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail4.Outline",
+      "after": 0.006208591665446946,
+      "kind": "border",
+      "basis": 322.1342468261719
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail4.TrailName.TextOutline",
+      "after": 0.06585365969960283,
+      "kind": "text",
+      "basis": 41
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail4.Rarity.TextOutline",
+      "after": 0.09642857313156128,
+      "kind": "text",
+      "basis": 28
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail4.Multiplier.Outline",
+      "after": 0.02985479407332045,
+      "kind": "border",
+      "basis": 50.243186950683594
+    },
+    {
+      "before": 2.700000047683716,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail4.Multiplier.Value.TextOutline",
+      "after": 0.06279069878334223,
+      "kind": "text",
+      "basis": 43
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail4.Action.Outline",
+      "after": 0.05449684632431511,
+      "kind": "border",
+      "basis": 45.87421417236328
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail4.Action.Label.TextOutline",
+      "after": 0.057499998807907106,
+      "kind": "text",
+      "basis": 40
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Trails.TrailList.Trail4.Action.Inset.Outline",
+      "after": 0.024771293783779597,
+      "kind": "border",
+      "basis": 40.36930847167969
+    },
+    {
+      "before": 4,
+      "path": "StarterGui.Panels.Sell.Pets.Outline",
+      "after": 0.0061831449107601875,
+      "kind": "border",
+      "basis": 646.9199829101562
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Header.Outline",
+      "after": 0.020206356989096796,
+      "kind": "border",
+      "basis": 98.97875213623047
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Header.Title.TextOutline",
+      "after": 0.032857142175946916,
+      "kind": "text",
+      "basis": 70
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Sell.Pets.Header.Close.Outline",
+      "after": 0.03505449611247906,
+      "kind": "border",
+      "basis": 71.3175277709961
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Header.Close.Inset.Outline",
+      "after": 0.014667152915968354,
+      "kind": "border",
+      "basis": 68.17955780029297
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Header.Close.Label.TextOutline",
+      "after": 0.03382352871053359,
+      "kind": "text",
+      "basis": 68
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item1.Outline",
+      "after": 0.014007178992708228,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item1.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item1.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item1.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item1.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item1.Selected.Outline",
+      "after": 0.035915844161538,
+      "kind": "border",
+      "basis": 55.68572998046875
+    },
+    {
+      "before": 0,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item1.Selected.Tick.TextOutline",
+      "after": 0,
+      "kind": "text",
+      "basis": 46
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item2.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item2.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item2.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item2.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item2.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item3.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item3.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item3.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item3.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item3.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item4.Outline",
+      "after": 0.014007178992708228,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item4.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item4.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item4.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item4.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item4.Selected.Outline",
+      "after": 0.035915844161538,
+      "kind": "border",
+      "basis": 55.68572998046875
+    },
+    {
+      "before": 0,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row1.Item4.Selected.Tick.TextOutline",
+      "after": 0,
+      "kind": "text",
+      "basis": 46
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item1.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item1.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item1.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item1.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item1.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item2.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item2.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item2.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item2.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item2.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item3.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item3.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item3.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item3.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item3.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item4.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item4.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item4.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item4.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row2.Item4.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item1.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item1.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item1.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item1.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item1.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item2.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item2.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item2.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item2.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item2.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item3.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item3.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item3.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item3.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item3.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item4.Outline",
+      "after": 0.009338119328472151,
+      "kind": "border",
+      "basis": 214.17588806152344
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item4.Weight.TextOutline",
+      "after": 0.09583333134651184,
+      "kind": "text",
+      "basis": 24
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item4.Income.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item4.SaleValue.Outline",
+      "after": 0.02530221956169356,
+      "kind": "border",
+      "basis": 39.52222442626953
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Inventory.Row3.Item4.SaleValue.Amount.TextOutline",
+      "after": 0.06764705742106718,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Sell.Pets.Footer.Outline",
+      "after": 0.02760332651758276,
+      "kind": "border",
+      "basis": 90.56879425048828
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Footer.TotalLabel.TextOutline",
+      "after": 0.058974357751699596,
+      "kind": "text",
+      "basis": 39
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Footer.TotalValue.TextOutline",
+      "after": 0.03898305003925905,
+      "kind": "text",
+      "basis": 59
+    },
+    {
+      "before": 2.5,
+      "path": "StarterGui.Panels.Sell.Pets.Footer.Sell.Outline",
+      "after": 0.03833795242013004,
+      "kind": "border",
+      "basis": 65.20953369140625
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.Panels.Sell.Pets.Footer.Sell.Inset.Outline",
+      "after": 0.01742634251886246,
+      "kind": "border",
+      "basis": 57.3843879699707
+    },
+    {
+      "before": 2.299999952316284,
+      "path": "StarterGui.Panels.Sell.Pets.Footer.Sell.Label.TextOutline",
+      "after": 0.058974357751699596,
+      "kind": "text",
+      "basis": 39
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.SideFrames.Animals.Outline",
+      "after": 0.006535947712418301,
+      "kind": "border",
+      "basis": 459
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.Header.Outline",
+      "after": 0.02609160767595542,
+      "kind": "border",
+      "basis": 76.65299987792969
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.Header.Title.TextOutline",
+      "after": 0.05,
+      "kind": "text",
+      "basis": 40
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.Header.BuyEquipSlot.Outline",
+      "after": 0.03623834219095272,
+      "kind": "border",
+      "basis": 55.190162658691406
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Animals.Header.BuyEquipSlot.Inset.Outline",
+      "after": 0.02035861968272755,
+      "kind": "border",
+      "basis": 49.11924362182617
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.Header.BuyEquipSlot.Label.TextOutline",
+      "after": 0.07142857142857142,
+      "kind": "text",
+      "basis": 28
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.SideFrames.Animals.List.Animal1.Outline",
+      "after": 0.012703295337208046,
+      "kind": "border",
+      "basis": 118.07959747314453
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal1.AnimalName.TextOutline",
+      "after": 0.058823529411764705,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal1.Income.TextOutline",
+      "after": 0.06896551724137931,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal1.Equip.Outline",
+      "after": 0.028229543369819896,
+      "kind": "border",
+      "basis": 70.84776306152344
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Animals.List.Animal1.Equip.Inset.Outline",
+      "after": 0.01585929425825959,
+      "kind": "border",
+      "basis": 63.054508209228516
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal1.Equip.Label.TextOutline",
+      "after": 0.0625,
+      "kind": "text",
+      "basis": 32
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.SideFrames.Animals.List.Animal2.Outline",
+      "after": 0.012703295337208046,
+      "kind": "border",
+      "basis": 118.07959747314453
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal2.AnimalName.TextOutline",
+      "after": 0.058823529411764705,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal2.Income.TextOutline",
+      "after": 0.06896551724137931,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal2.Equip.Outline",
+      "after": 0.028229543369819896,
+      "kind": "border",
+      "basis": 70.84776306152344
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Animals.List.Animal2.Equip.Inset.Outline",
+      "after": 0.01585929425825959,
+      "kind": "border",
+      "basis": 63.054508209228516
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal2.Equip.Label.TextOutline",
+      "after": 0.0625,
+      "kind": "text",
+      "basis": 32
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.SideFrames.Animals.List.Animal3.Outline",
+      "after": 0.012703295337208046,
+      "kind": "border",
+      "basis": 118.07959747314453
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal3.AnimalName.TextOutline",
+      "after": 0.058823529411764705,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal3.Income.TextOutline",
+      "after": 0.06896551724137931,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal3.Equip.Outline",
+      "after": 0.028229543369819896,
+      "kind": "border",
+      "basis": 70.84776306152344
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Animals.List.Animal3.Equip.Inset.Outline",
+      "after": 0.01585929425825959,
+      "kind": "border",
+      "basis": 63.054508209228516
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal3.Equip.Label.TextOutline",
+      "after": 0.0625,
+      "kind": "text",
+      "basis": 32
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.SideFrames.Animals.List.Animal4.Outline",
+      "after": 0.012703295337208046,
+      "kind": "border",
+      "basis": 118.07959747314453
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal4.AnimalName.TextOutline",
+      "after": 0.058823529411764705,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal4.Income.TextOutline",
+      "after": 0.06896551724137931,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal4.Equip.Outline",
+      "after": 0.028229543369819896,
+      "kind": "border",
+      "basis": 70.84776306152344
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Animals.List.Animal4.Equip.Inset.Outline",
+      "after": 0.01585929425825959,
+      "kind": "border",
+      "basis": 63.054508209228516
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal4.Equip.Label.TextOutline",
+      "after": 0.0625,
+      "kind": "text",
+      "basis": 32
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.SideFrames.Animals.List.Animal5.Outline",
+      "after": 0.012703295337208046,
+      "kind": "border",
+      "basis": 118.07959747314453
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal5.AnimalName.TextOutline",
+      "after": 0.058823529411764705,
+      "kind": "text",
+      "basis": 34
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal5.Income.TextOutline",
+      "after": 0.06896551724137931,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal5.Equip.Outline",
+      "after": 0.028229543369819896,
+      "kind": "border",
+      "basis": 70.84776306152344
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Animals.List.Animal5.Equip.Inset.Outline",
+      "after": 0.01585929425825959,
+      "kind": "border",
+      "basis": 63.054508209228516
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.List.Animal5.Equip.Label.TextOutline",
+      "after": 0.0625,
+      "kind": "text",
+      "basis": 32
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.Collapse.Outline",
+      "after": 0.02904865392448928,
+      "kind": "border",
+      "basis": 68.85000610351562
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Animals.Collapse.Inset.Outline",
+      "after": 0.016319468740731962,
+      "kind": "border",
+      "basis": 61.27650451660156
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.Collapse.Label.TextOutline",
+      "after": 0.05263157894736842,
+      "kind": "text",
+      "basis": 38
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.EquipBest.Outline",
+      "after": 0.032761642193811766,
+      "kind": "border",
+      "basis": 61.047000885009766
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Animals.EquipBest.Inset.Outline",
+      "after": 0.01840541754433462,
+      "kind": "border",
+      "basis": 54.33182907104492
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Animals.EquipBest.Label.TextOutline",
+      "after": 0.05714285714285714,
+      "kind": "text",
+      "basis": 35
+    },
+    {
+      "before": 3,
+      "path": "StarterGui.SideFrames.Eggs.Outline",
+      "after": 0.006535947712418301,
+      "kind": "border",
+      "basis": 459
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.Header.Outline",
+      "after": 0.02609160767595542,
+      "kind": "border",
+      "basis": 76.65299987792969
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.Header.Title.TextOutline",
+      "after": 0.05,
+      "kind": "text",
+      "basis": 40
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.Header.GrowAll.Outline",
+      "after": 0.03623834219095272,
+      "kind": "border",
+      "basis": 55.190162658691406
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Eggs.Header.GrowAll.Inset.Outline",
+      "after": 0.02035861968272755,
+      "kind": "border",
+      "basis": 49.11924362182617
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.Header.GrowAll.Label.TextOutline",
+      "after": 0.06896551724137931,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg1.Outline",
+      "after": 0.012703295337208046,
+      "kind": "border",
+      "basis": 118.07959747314453
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg1.Open.Outline",
+      "after": 0.033875454232554794,
+      "kind": "border",
+      "basis": 59.039798736572266
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg1.Open.Inset.Outline",
+      "after": 0.019031153800724194,
+      "kind": "border",
+      "basis": 52.5454216003418
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg1.Open.Label.TextOutline",
+      "after": 0.06060606060606061,
+      "kind": "text",
+      "basis": 33
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg2.Outline",
+      "after": 0.012703295337208046,
+      "kind": "border",
+      "basis": 118.07959747314453
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg2.GrowthProgress.Outline",
+      "after": 0.043994097624155265,
+      "kind": "border",
+      "basis": 45.46064376831055
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg2.GrowthProgress.TimeRemaining.TextOutline",
+      "after": 0.06896551724137931,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg3.Outline",
+      "after": 0.012703295337208046,
+      "kind": "border",
+      "basis": 118.07959747314453
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg3.GrowthProgress.Outline",
+      "after": 0.043994097624155265,
+      "kind": "border",
+      "basis": 45.46064376831055
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg3.GrowthProgress.TimeRemaining.TextOutline",
+      "after": 0.06896551724137931,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 1.5,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg4.Outline",
+      "after": 0.012703295337208046,
+      "kind": "border",
+      "basis": 118.07959747314453
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg4.GrowthProgress.Outline",
+      "after": 0.043994097624155265,
+      "kind": "border",
+      "basis": 45.46064376831055
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.List.Egg4.GrowthProgress.TimeRemaining.TextOutline",
+      "after": 0.06896551724137931,
+      "kind": "text",
+      "basis": 29
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.Collapse.Outline",
+      "after": 0.02904865392448928,
+      "kind": "border",
+      "basis": 68.85000610351562
+    },
+    {
+      "before": 1,
+      "path": "StarterGui.SideFrames.Eggs.Collapse.Inset.Outline",
+      "after": 0.016319468740731962,
+      "kind": "border",
+      "basis": 61.27650451660156
+    },
+    {
+      "before": 2,
+      "path": "StarterGui.SideFrames.Eggs.Collapse.Label.TextOutline",
+      "after": 0.05263157894736842,
+      "kind": "text",
+      "basis": 38
+    },
+    {
+      "before": 2,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.droppedFrame.Frame.TextLabel.UIStroke",
+      "after": 0.11764705882352941,
+      "kind": "text",
+      "basis": 17
+    },
+    {
+      "before": 2,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.droppedFrame.Frame.ImageLabel.UIStroke",
+      "after": 0.13995493070464035,
+      "kind": "border",
+      "basis": 14.290314674377441
+    },
+    {
+      "before": 1,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.UIStroke",
+      "after": 0.006617203902187435,
+      "kind": "border",
+      "basis": 151.12123107910156
+    },
+    {
+      "before": 2,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.Frame.UIStroke",
+      "after": 0.013930955509520084,
+      "kind": "border",
+      "basis": 143.56517028808594
+    },
+    {
+      "before": 2,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.Rarity.UIStroke",
+      "after": 0.08695652173913043,
+      "kind": "text",
+      "basis": 23
+    },
+    {
+      "before": 2,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.EarnRate.UIStroke",
+      "after": 0.05128205128205128,
+      "kind": "text",
+      "basis": 39
+    },
+    {
+      "before": 2,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.equippedFrame.Frame.ImageLabel.UIStroke",
+      "after": 0.13995493070464035,
+      "kind": "border",
+      "basis": 14.290314674377441
+    },
+    {
+      "before": 2,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.equippedFrame.Frame.TextLabel.UIStroke",
+      "after": 0.11764705882352941,
+      "kind": "text",
+      "basis": 17
+    },
+    {
+      "before": 2,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.placedFrame.Frame.TextLabel.UIStroke",
+      "after": 0.11764705882352941,
+      "kind": "text",
+      "basis": 17
+    },
+    {
+      "before": 2,
+      "path": "ReplicatedStorage.src.AssetsToLoad.NotificationsScreenGui.CanvasGroup.BrainrotTemplate.Template.placedFrame.Frame.ImageLabel.UIStroke",
+      "after": 0.13995493070464035,
+      "kind": "border",
+      "basis": 14.290314674377441
+    }
+  ],
+  "count": 285,
+  "viewport": "1919, 1080"
+}

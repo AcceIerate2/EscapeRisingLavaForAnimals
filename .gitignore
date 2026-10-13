@@ -9,3 +9,5 @@ sourcemap.json
 src/shared/replicatedStorage/Packages
 src/shared/serverStorage/Packages
 wally.lock
+.claude/settings.local.json
+

@@ -95,7 +95,7 @@ function MonetizationService:processReceipt(receiptInfo)
 		return Enum.ProductPurchaseDecision.NotProcessedYet
 	end
 
-	local purchaseHistoryValueObject = self.DataService:get(player, "PurchaseHistory")
+	local purchaseHistoryValueObject = self.DataService:GetValueObject(player, "PurchaseHistory")
 	local history = purchaseHistoryValueObject:Get() or {}
 
 	local purchaseKey = receiptInfo.PurchaseId

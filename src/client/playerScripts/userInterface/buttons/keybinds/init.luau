@@ -30,8 +30,15 @@ local function createImageLabel(parent, props)
 		CornerRadius = UDim.new(1, 0),
 	})
 
+	-- Match the former 1px outline at the UI's 1080p reference size.
+	local camera = workspace.CurrentCamera
+	local referenceSize = 64
+	if camera and camera.ViewportSize.Y > 0 and parent.AbsoluteSize.Y > 0 then
+		referenceSize = parent.AbsoluteSize.Y * frame.Size.Y.Scale * 1080 / camera.ViewportSize.Y
+	end
 	InstanceCreator("UIStroke", "UIStroke", frame, {
-		Thickness = 1,
+		StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize,
+		Thickness = 1 / referenceSize,
 		Color = Color3.fromRGB(255, 255, 255),
 	})
 
