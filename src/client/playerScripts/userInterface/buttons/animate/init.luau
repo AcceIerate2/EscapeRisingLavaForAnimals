@@ -165,6 +165,7 @@ function Animate:connect(button: GuiButton)
 		ImageColor = if button:IsA("ImageButton") then button.ImageColor3 else nil,
 		Hovered = false,
 		Selected = GuiService.SelectedObject == button,
+		Pressed = nil,
 	}
 	self.ButtonStates[button] = entry
 	local connections = {}
@@ -228,9 +229,12 @@ function Animate:connect(button: GuiButton)
 	connect(button.Activated, function(input)
 		release(button, entry)
 		tapEffect(button, input)
-		-- A button can swap the generic click for its own UI sound via a ClickSound attribute.
+		-- Every button clicks; a ClickSound attribute plays an extra UI sound on top (e.g. a toggle).
+		playSound("Click")
 		local clickSound = button:GetAttribute("ClickSound")
-		playSound(if typeof(clickSound) == "string" then clickSound else "Click")
+		if typeof(clickSound) == "string" and clickSound ~= "Click" then
+			playSound(clickSound)
+		end
 	end)
 	connect(button.Destroying, function()
 		self:disconnect(button)
@@ -257,7 +261,7 @@ function Animate:disconnect(button: GuiButton)
 		button.Size = entry.DefaultSize
 		button.Rotation = entry.DefaultRotation
 	end
-	if entry.ImageColor then
+	if entry.ImageColor and button:IsA("ImageButton") then
 		button.ImageColor3 = entry.ImageColor
 	end
 	self.ButtonConnections[button] = nil

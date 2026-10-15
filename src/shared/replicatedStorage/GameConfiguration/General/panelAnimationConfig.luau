@@ -55,6 +55,11 @@ PanelAnimationConfig.Panels = {
 		Pieces = { "Pets/Header", "Pets/Inventory/*/*", "Pets/Footer" },
 	},
 
+	Settings = {
+		Style = "Pop",
+		Pieces = { "Header", "Music", "Sfx", "LowGraphics", "Reset" },
+	},
+
 	Rebirth = {
 		Style = "Lego",
 		Pieces = {

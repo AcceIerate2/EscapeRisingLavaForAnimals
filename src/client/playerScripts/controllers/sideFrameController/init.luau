@@ -71,7 +71,10 @@ function SideFrameController:Close()
 
 	self.ActiveFrame = nil
 	soundHandler:play(closeSfx, { Parent = SoundService, PlayOver = true })
-	self:slideFrame(self.RightMenu, false)
+	-- Inside the pit the lava HUD owns the right side, so the menu stays hidden.
+	if not knit.GetController("LavaHudController").IsInPit then
+		self:slideFrame(self.RightMenu, false)
+	end
 	self:slideFrame(frame, true)
 end
 

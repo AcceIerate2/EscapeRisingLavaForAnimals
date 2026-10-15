@@ -1,3 +1,10 @@
+-- Roblox Services
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Config
+local settingsConfig = require(ReplicatedStorage.src.GameConfiguration.General.settingsConfig)
+
+-->
 return {
 	DataTemplate = {
 		Cash = 500000,
@@ -9,6 +16,8 @@ return {
 
 		OwnedTrails = {},
 		EquippedTrail = "",
+
+		Settings = settingsConfig.GetDefaults(),
 
 		LastSeen = 0,
 		JoinedBefore = false,

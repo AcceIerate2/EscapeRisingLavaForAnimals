@@ -15,7 +15,36 @@ local staggerSeconds = 0.35
 local ShopTitles = {}
 
 -- Private Methods
+-- TextScaled re-fits the text to whole font sizes every frame while the UIScale pulses, which made
+-- the pulse step instead of glide. Lock the fitted size so the UIScale scales it smoothly, and
+-- re-fit only when the label's own size changes (screen resize).
+function ShopTitles:lockTextSize(title: TextLabel)
+	local function fit()
+		local pulse = title:FindFirstChildOfClass("UIScale")
+		local scale = pulse and pulse.Scale or 1
+		title.TextScaled = true
+		task.defer(function()
+			title.TextSize = math.floor(title.TextBounds.Y / scale)
+			title.TextScaled = false
+		end)
+	end
+
+	fit()
+	local lastSize = title.AbsoluteSize
+	title:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+		-- AbsoluteSize also changes while the UIScale pulses; only refit on real layout changes.
+		local pulse = title:FindFirstChildOfClass("UIScale")
+		local base = title.AbsoluteSize / (pulse and pulse.Scale or 1)
+		if (base - lastSize).Magnitude > 2 then
+			lastSize = base
+			fit()
+		end
+	end)
+end
+
 function ShopTitles:animate(title: TextLabel, delaySeconds: number)
+	self:lockTextSize(title)
+
 	local shine = title:FindFirstChild("Shine")
 	local pulse = title:FindFirstChild("Pulse")
 

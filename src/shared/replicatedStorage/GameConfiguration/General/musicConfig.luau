@@ -3,6 +3,7 @@ local SoundService = game:GetService("SoundService")
 
 --
 local MusicFolder = SoundService:WaitForChild("src"):WaitForChild("Music"):WaitForChild("Background")
+local PitFolder = SoundService:WaitForChild("src"):WaitForChild("Music"):WaitForChild("Pit")
 
 -->
 local MusicConfig = {}
@@ -12,6 +13,10 @@ MusicConfig.SoundTracks = {
 	[1] = MusicFolder:WaitForChild("Music1"),
 }
 
+-- Loops while the player is in the pit; the background tracks pause until they leave.
+MusicConfig.PitTrack = PitFolder:WaitForChild("PitMusic")
+
 MusicConfig.DefaultVolume = 0.35
+MusicConfig.FadeTime = 0.8 -- seconds to cross-fade between the background and the pit music
 
 return MusicConfig
