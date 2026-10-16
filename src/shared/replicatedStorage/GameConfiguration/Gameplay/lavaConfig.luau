@@ -17,6 +17,7 @@ LavaConfig.DamageCooldown = 3 -- seconds between hits from the same wave on the 
 LavaConfig.SpawnInterval = 25 -- seconds between new waves
 LavaConfig.MaxWaves = 6 -- waves rising at once at most
 LavaConfig.TopHoldTime = 0.5 -- seconds a wave stays at the top before disappearing
+LavaConfig.FadeTime = 1 -- seconds a finished wave takes to fade out (it no longer damages while fading)
 LavaConfig.TopGap = 1 -- studs between a wave's surface and the underside of the top pad
 
 -- Look and sound

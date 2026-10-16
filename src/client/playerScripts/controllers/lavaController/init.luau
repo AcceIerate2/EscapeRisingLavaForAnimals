@@ -1,6 +1,8 @@
 -- Roblox Services
+local Debris = game:GetService("Debris")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
 
 -- Packages
 local Signal = require(ReplicatedStorage.src.Packages.Signal)
@@ -35,6 +37,34 @@ function LavaController:GetType(wave: Folder)
 end
 
 -- Private Methods
+-- Fades a finished wave's slab, its sign and its sound out, then destroys it.
+local function fadeOut(slab: BasePart)
+	local info = TweenInfo.new(lavaConfig.FadeTime, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+	local function fade(instance: Instance, goal)
+		TweenService:Create(instance, info, goal):Play()
+	end
+
+	fade(slab, { Transparency = 1 })
+	for _, child in slab:GetDescendants() do
+		if child:IsA("Decal") or child:IsA("Texture") or child:IsA("UIStroke") then
+			fade(child, { Transparency = 1 })
+		elseif child:IsA("ImageLabel") or child:IsA("ImageButton") then
+			fade(child, { ImageTransparency = 1, BackgroundTransparency = 1 })
+		elseif child:IsA("TextLabel") or child:IsA("TextButton") then
+			fade(child, { TextTransparency = 1, TextStrokeTransparency = 1, BackgroundTransparency = 1 })
+		elseif child:IsA("Frame") then
+			fade(child, { BackgroundTransparency = 1 })
+		elseif child:IsA("Light") then
+			fade(child, { Brightness = 0 })
+		elseif child:IsA("Sound") then
+			fade(child, { Volume = 0 })
+		elseif child:IsA("ParticleEmitter") or child:IsA("Beam") or child:IsA("Trail") then
+			child.Enabled = false
+		end
+	end
+	Debris:AddItem(slab, lavaConfig.FadeTime)
+end
+
 function LavaController:getOrigin(): CFrame?
 	local map = workspace:FindFirstChild("GeneratedMap")
 	local cframe = map and map:GetAttribute("ReferenceCFrame")
@@ -98,8 +128,8 @@ end
 function LavaController:removeWave(wave: Folder)
 	local slab = self.Slabs[wave]
 	if slab then
-		slab:Destroy()
 		self.Slabs[wave] = nil
+		fadeOut(slab)
 	end
 	self.WaveRemoved:Fire(wave)
 end

@@ -44,7 +44,7 @@ local function findSound(path: string?): Sound?
 end
 
 local function playSound(sound: Sound?)
-	if sound then
+	if sound and sound.SoundId ~= "" then
 		soundHandler:play(sound, { Parent = SoundService, PlayOver = true })
 	end
 end
@@ -53,7 +53,15 @@ end
 local CounterDisplayController = knit.CreateController({
 	Name = "CounterDisplayController",
 	Counters = {}, -- [name]: counter state
+	QuietChecks = {}, -- [dataKey]: () -> boolean, true while gains should skip the effects
 })
+
+-- Public Methods
+-- While check() returns true, gains to dataKey just pop the number (with the counter's QuietSound)
+-- instead of the burst, gain sound and "+X".
+function CounterDisplayController:SetQuietCheck(dataKey: string, check: () -> boolean)
+	self.QuietChecks[dataKey] = check
+end
 
 -- Private Methods
 function CounterDisplayController:format(counter, amount: number): string
@@ -313,6 +321,24 @@ function CounterDisplayController:onChanged(counter, value: number)
 		return
 	end
 
+	-- Gains a system shows itself (e.g. treadmill training) just show the new number and pop it in size,
+	-- with their own sound - played at most once per QuietCooldown so rapid gains don't spam it.
+	local quiet = self.QuietChecks[counter.Settings.DataKey]
+	if quiet and quiet() then
+		if counter.CountConnection then
+			counter.CountConnection:Disconnect()
+			counter.CountConnection = nil
+		end
+		self:setDisplayed(counter, value)
+		local now = os.clock()
+		self:pop(counter, config.QuietPop)
+		if now - counter.LastQuietPop >= config.QuietCooldown then
+			counter.LastQuietPop = now
+			playSound(counter.QuietSound)
+		end
+		return
+	end
+
 	-- Gains in quick succession (e.g. passive income) skip the burst and just count up.
 	local now = os.clock()
 	if now - counter.LastBurst < config.Burst.Cooldown then
@@ -341,6 +367,15 @@ function CounterDisplayController:setupCounter(name: string, settings, frame: Fr
 	local scale = Instance.new("UIScale")
 	scale.Parent = value
 
+	-- A text size cap would stop the text growing with the UIScale, so it grows along with it.
+	local limit = value:FindFirstChildOfClass("UITextSizeConstraint")
+	if limit then
+		local baseMax = limit.MaxTextSize
+		scale:GetPropertyChangedSignal("Scale"):Connect(function()
+			limit.MaxTextSize = math.max(1, math.round(baseMax * scale.Scale))
+		end)
+	end
+
 	local counter = {
 		Settings = settings,
 		Value = value,
@@ -350,9 +385,11 @@ function CounterDisplayController:setupCounter(name: string, settings, frame: Fr
 		BasePosition = value.Position,
 		GainSound = findSound(settings.GainSound),
 		LossSound = findSound(settings.LossSound),
+		QuietSound = findSound(settings.QuietSound),
 		Current = dataController:GetValue(settings.DataKey),
 		Displayed = 0,
 		LastBurst = 0,
+		LastQuietPop = 0,
 	}
 	self.Counters[name] = counter
 	self:setDisplayed(counter, counter.Current)

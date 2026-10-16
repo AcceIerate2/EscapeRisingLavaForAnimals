@@ -5,18 +5,20 @@ local PlotUpgradeConfig = {}
 	Fences: model in ReplicatedStorage.Assets.Fences placed on the plot at this level.
 	MaxAnimals: how many animals the player can keep on their plot at this level.
 	Cost: cash to upgrade TO this level (level 1 is free).
+	ProductId: Developer Product that buys the upgrade TO this level with Robux (shown on the sign
+	when the player can't afford the cash price). 0 = not set up yet ("coming soon").
 
 	Progression: +2 slots every level, and each upgrade costs roughly 16x the one before.
 ]]
 PlotUpgradeConfig.Levels = {
-	{ Fences = "Fences_1", MaxAnimals = 6, Cost = 0 },
-	{ Fences = "Fences_2", MaxAnimals = 8, Cost = 25_000 },
-	{ Fences = "Fences_3", MaxAnimals = 10, Cost = 400_000 },
-	{ Fences = "Fences_4", MaxAnimals = 12, Cost = 6_500_000 },
-	{ Fences = "Fences_5", MaxAnimals = 14, Cost = 100_000_000 },
-	{ Fences = "Fences_6", MaxAnimals = 16, Cost = 1_600_000_000 },
-	{ Fences = "Fences_7", MaxAnimals = 18, Cost = 25_000_000_000 },
-	{ Fences = "Fences_8", MaxAnimals = 20, Cost = 400_000_000_000 },
+	{ Fences = "Fences_1", MaxAnimals = 6, Cost = 0, ProductId = 0 },
+	{ Fences = "Fences_2", MaxAnimals = 8, Cost = 25_000, ProductId = 0 },
+	{ Fences = "Fences_3", MaxAnimals = 10, Cost = 400_000, ProductId = 0 },
+	{ Fences = "Fences_4", MaxAnimals = 12, Cost = 6_500_000, ProductId = 0 },
+	{ Fences = "Fences_5", MaxAnimals = 14, Cost = 100_000_000, ProductId = 0 },
+	{ Fences = "Fences_6", MaxAnimals = 16, Cost = 1_600_000_000, ProductId = 0 },
+	{ Fences = "Fences_7", MaxAnimals = 18, Cost = 25_000_000_000, ProductId = 0 },
+	{ Fences = "Fences_8", MaxAnimals = 20, Cost = 400_000_000_000, ProductId = 0 },
 }
 
 PlotUpgradeConfig.MaxLevel = #PlotUpgradeConfig.Levels

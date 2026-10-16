@@ -4,6 +4,8 @@ local CounterEffectsConfig = {}
 CounterEffectsConfig.Font = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Heavy)
 CounterEffectsConfig.CountTime = 0.35 -- count up/down time when there's no burst
 CounterEffectsConfig.Sparkles = 8 -- symbols that burst out of the counter after a gain
+CounterEffectsConfig.QuietPop = 1.2 -- how big the number pops on a quiet gain (1 = no pop)
+CounterEffectsConfig.QuietCooldown = 0.7 -- seconds between quiet gain sounds (the pop plays every gain)
 
 -- Icons that pop up around the centre of the screen and arc into the counter on a gain.
 CounterEffectsConfig.Burst = {
@@ -23,6 +25,7 @@ CounterEffectsConfig.Burst = {
 	Prefix: put before the number ("$" for cash).
 	Sparkle: the symbol that bursts out after a gain.
 	GainSound / LossSound: paths under SoundService.src.Sfx.
+	QuietSound: played instead when a quiet gain pops the number (e.g. treadmill training); optional.
 	The flying icons use the counter's own Icon image.
 ]]
 CounterEffectsConfig.Counters = {
@@ -42,6 +45,7 @@ CounterEffectsConfig.Counters = {
 		GainColor = Color3.fromRGB(90, 200, 255),
 		LossColor = Color3.fromRGB(255, 63, 69),
 		GainSound = "Speed/Gain",
+		QuietSound = "Speed/Train",
 		LossSound = "Speed/Loss",
 	},
 }

@@ -8,6 +8,9 @@ local knit = require(ReplicatedStorage.src.Packages.knit)
 -- Utility
 local NumberShortner = require(ReplicatedStorage.src.utility.NumberShortner)
 local TypeCheck = require(ReplicatedStorage.src.utility.TypeCheck)
+local localHide = require(ReplicatedStorage.src.utility.localHide)
+local AffordBadge = require(ReplicatedStorage.src.utility.affordBadge)
+local SignButtons = require(ReplicatedStorage.src.utility.signButtons)
 
 -- Config
 local plotUpgradeConfig = require(ReplicatedStorage.src.GameConfiguration.Gameplay.plotUpgradeConfig)
@@ -27,6 +30,20 @@ local PlotController = knit.CreateController({
 -- Public Methods
 function PlotController:GetPlot(): Model?
 	return self.Plot
+end
+
+-- Buys the next level with Robux (offered on the sign when the cash price is out of reach).
+function PlotController:RequestRobuxUpgrade()
+	local level = self.Plot and self.Plot:GetAttribute("PlotLevel") or 1
+	local nextLevel = self.UpgradeConfig.Levels[level + 1]
+	if not nextLevel then
+		return
+	end
+	if not nextLevel.ProductId or nextLevel.ProductId == 0 then
+		self.NotificationController:Push({ Message = "Robux upgrades are coming soon!", Color = Color3.new(1, 1, 1) })
+		return
+	end
+	self.MonetizationController:promptPurchase("Product", nextLevel.ProductId)
 end
 
 function PlotController:RequestUpgrade()
@@ -75,21 +92,25 @@ function PlotController:loadPlot()
 	self:updateOverhead()
 end
 
--- Every owned plot shows its level; only the local player's own sign gets the upgrade button.
+-- Only the local player's own plot sign shows; everyone else's is hidden on this client.
 function PlotController:refreshSign(plot: Model)
 	local sign = self.Signs[plot]
 	local gui = sign.Gui
 
 	local ownerId = plot:GetAttribute("OwnerUserId")
-	gui.Enabled = ownerId ~= nil
-	if not ownerId then
+	local isMine = ownerId == player.UserId
+	gui.Enabled = isMine
+	local signModel = plot:FindFirstChild("PlotUpgradeSign")
+	if signModel then
+		localHide.Set(signModel, not isMine)
+	end
+	if not isMine then
 		return
 	end
 
 	local level = plot:GetAttribute("PlotLevel") or 1
 	local current = self.UpgradeConfig.GetLevel(level)
 	local nextLevel = self.UpgradeConfig.Levels[level + 1]
-	local isMine = ownerId == player.UserId
 
 	if nextLevel then
 		gui.Level.Text = `LV {level}  ▶  LV {level + 1}`
@@ -100,8 +121,28 @@ function PlotController:refreshSign(plot: Model)
 		gui.Slots.Text = `{current.MaxAnimals} ANIMAL SLOTS`
 	end
 
-	gui.Upgrade.Visible = isMine and nextLevel ~= nil
+	gui.Upgrade.Visible = nextLevel ~= nil
 	gui.MaxLevel.Visible = nextLevel == nil
+	self:refreshMine()
+end
+
+-- Your own sign: the "!" badge while you can afford the next upgrade, otherwise a red price button
+-- with the Robux square next to it.
+function PlotController:refreshMine()
+	local plot = self.Plot
+	local sign = plot and self.Signs[plot]
+	local level = plot and plot:GetAttribute("PlotLevel") or 1
+	local nextLevel = self.UpgradeConfig.Levels[level + 1]
+	local cash = self.DataController:GetValue("Cash") or 0
+	local affordable = nextLevel ~= nil and cash >= nextLevel.Cost
+
+	if self.Badge then
+		self.Badge:Show(affordable)
+	end
+	if sign then
+		SignButtons.Set(self.ButtonsController, sign.Gui, affordable or nextLevel == nil)
+		SignButtons.SetPrice(sign.Gui, nextLevel and nextLevel.ProductId)
+	end
 end
 
 function PlotController:createSign(plot: Model, template: SurfaceGui)
@@ -160,6 +201,18 @@ function PlotController:bindSigns(template: SurfaceGui)
 		if gui.Adornee ~= adornee then
 			gui.Adornee = adornee
 		end
+
+		-- Re-hides others' signs so parts that streamed in later stay hidden too.
+		if signModel and plot:GetAttribute("OwnerUserId") ~= player.UserId then
+			localHide.Hide(signModel)
+		elseif plot == self.Plot and adornee then
+			if not self.Badge then
+				self.Badge = AffordBadge.new(adornee)
+			elseif self.Badge.Gui.Adornee ~= adornee then
+				self.Badge:SetAdornee(adornee)
+			end
+			self:refreshMine()
+		end
 	end
 end
 
@@ -168,6 +221,8 @@ function PlotController:KnitInit()
 	self.PlotService = knit.GetService("PlotService")
 	self.ButtonsController = knit.GetController("ButtonsController")
 	self.NotificationController = knit.GetController("NotificationController")
+	self.MonetizationController = knit.GetController("MonetizationController")
+	self.DataController = knit.GetController("DataController")
 	self:loadPlot()
 end
 
@@ -176,6 +231,9 @@ function PlotController:KnitStart()
 		-- The button system is listening once the UI is ready.
 		player:WaitForChild("ClientReady")
 		local template = player.PlayerGui:WaitForChild("PlotSignTemplate")
+		self.DataController:GetValueChangedSignal("Cash"):Connect(function()
+			self:refreshMine()
+		end)
 
 		while true do
 			self:bindSigns(template)

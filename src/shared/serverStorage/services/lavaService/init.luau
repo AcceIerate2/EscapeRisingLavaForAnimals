@@ -138,7 +138,7 @@ function LavaService:removeWave(wave: Folder)
 end
 
 -- Damages players a wave's slab is passing through, unless they are in a safe zone.
-function LavaService:damagePlayers(pit, wave: Folder, height: number)
+function LavaService:damagePlayers(pit, wave, height: number)
 	local now = os.clock()
 	local thickness = wave:GetAttribute("Thickness")
 	local shape = lavaConfig.Shape(wave:GetAttribute("Mutation"), pit.HalfExtent, height)
@@ -165,6 +165,7 @@ function LavaService:damagePlayers(pit, wave: Folder, height: number)
 				break
 			end
 		end
+
 		if not inside or self.SafeZoneService:IsInSafeZone(player) then
 			continue
 		end

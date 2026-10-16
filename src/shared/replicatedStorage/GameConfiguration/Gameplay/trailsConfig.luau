@@ -21,7 +21,6 @@ local TrailsConfig = {}
 
 -- Applied to every trail unless the trail overrides it.
 TrailsConfig.Settings = {
-	BaseWalkSpeed = 16, -- WalkSpeed is BaseWalkSpeed * the equipped trail's SpeedMultiplier.
 	AttachmentHeight = 1, -- Studs above/below the HumanoidRootPart; sets the trail's width.
 	AttachmentBackOffset = 0.3, -- Studs behind the HumanoidRootPart.
 
@@ -35,6 +34,7 @@ TrailsConfig.Settings = {
 	Trails show in the shop in this order.
 	Id: saved to player data, never change it after release.
 	ProductId: Developer Product for the Robux button, 0 hides the button.
+	SpeedMultiplier: multiplies the Speed the player gains on their treadmill (x2 = trains twice as fast).
 	Art / CardColor: shop card image and background gradient.
 	Color: the trail itself, optional Lifetime / LightEmission / Transparency / WidthScale override Settings.
 ]]

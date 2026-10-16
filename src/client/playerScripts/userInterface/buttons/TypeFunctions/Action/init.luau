@@ -63,6 +63,26 @@ local functions = {
 		knit.GetController("PlotController"):RequestUpgrade()
 	end,
 
+	UpgradeTreadmill = function()
+		knit.GetController("TreadmillController"):RequestUpgrade()
+	end,
+
+	RobuxUpgradeTreadmill = function()
+		knit.GetController("TreadmillController"):RequestRobuxUpgrade()
+	end,
+
+	RobuxUpgradePlot = function()
+		knit.GetController("PlotController"):RequestRobuxUpgrade()
+	end,
+
+	StopTreadmill = function()
+		knit.GetController("TreadmillController"):Stop()
+	end,
+
+	ClaimTreadmillBoost = function(button)
+		knit.GetController("TreadmillController"):ClaimBoost(button:GetAttribute("Token"))
+	end,
+
 	OpenShopSection = function(button)
 		knit.GetController("ShopController"):OpenSection(button:GetAttribute("ShopSection"))
 	end,

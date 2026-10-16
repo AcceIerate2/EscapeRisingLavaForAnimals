@@ -106,6 +106,12 @@ function TrailService:UnequipTrail(player: Player)
 	return { Status = true }
 end
 
+-- The equipped trail's multiplier on treadmill Speed gains (1 without a trail).
+function TrailService:GetSpeedMultiplier(player: Player): number
+	local trail = self.Config.GetTrail(self.DataService:GetValue(player, "EquippedTrail") or "")
+	return if trail then trail.SpeedMultiplier else 1
+end
+
 -- Private Methods
 function TrailService:createTrail(root: BasePart, trail)
 	local settings = self.Config.Settings
@@ -150,9 +156,6 @@ function TrailService:applyTrail(player: Player, character: Model?)
 	if trail then
 		self:createTrail(root, trail)
 	end
-
-	local speedMultiplier = if trail then trail.SpeedMultiplier else 1
-	humanoid.WalkSpeed = self.Config.Settings.BaseWalkSpeed * speedMultiplier
 end
 
 function TrailService:registerProducts()

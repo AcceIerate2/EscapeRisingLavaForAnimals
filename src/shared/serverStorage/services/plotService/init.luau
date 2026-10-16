@@ -77,8 +77,7 @@ function PlotService:UpgradePlot(player: Player)
 	end
 
 	self.CashService:ManipulatePlayerCash(player, -cost, "Addition")
-	self.DataService:GetValueObject(player, "PlotLevel"):Set(nextLevel)
-	self:applyLevel(plot, nextLevel)
+	self:setLevel(player, plot, nextLevel)
 
 	return {
 		Status = true,
@@ -158,6 +157,28 @@ function PlotService:SpawnCharacter(player: Player, character: Model)
 end
 
 -- Private Methods
+function PlotService:setLevel(player: Player, plot: Model, level: number)
+	self.DataService:GetValueObject(player, "PlotLevel"):Set(level)
+	self:applyLevel(plot, level)
+end
+
+-- Each level's Robux product buys exactly that level, so it only applies as the very next one.
+function PlotService:registerProducts()
+	for level, data in self.UpgradeConfig.Levels do
+		if not data.ProductId or data.ProductId == 0 then
+			continue
+		end
+		self.MonetizationService.ProductIds[data.ProductId] = function(player: Player)
+			local plot = self:GetPlayerPlot(player)
+			if not plot or self:GetPlotLevel(player) + 1 ~= level then
+				error("Plot level no longer matches this product") -- leaves the receipt unprocessed
+			end
+			self:setLevel(player, plot, level)
+			return true
+		end
+	end
+end
+
 -- Swaps in the fence model for this level. Every Fences_N shares its pivot on the gate side,
 -- so pivoting each one to the plot's original fence pivot lines them up and they grow inwards.
 function PlotService:applyLevel(plot: Model, level: number)
@@ -209,6 +230,8 @@ function PlotService:KnitInit()
 	self.PlayerService = knit.GetService("PlayerService")
 	self.DataService = knit.GetService("DataService")
 	self.CashService = knit.GetService("CashService")
+	self.MonetizationService = knit.GetService("MonetizationService")
+	self:registerProducts()
 	self.Plots = workspace:WaitForChild("Plots")
 
 	for _, plot in ipairs(self.Plots:GetChildren()) do

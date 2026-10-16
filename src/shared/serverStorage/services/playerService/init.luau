@@ -55,6 +55,13 @@ function PlayerService:load(player: Player)
 		Args = { self.PlotService, player },
 	}
 
+	-- TreadmillService
+	self.TreadmillService:Load(player, plot)
+	playerDisconnectFunctions.treadmillDisconnectFunction = {
+		Function = self.TreadmillService.Unload,
+		Args = { self.TreadmillService, player },
+	}
+
 	-- Gamepasses
 	self.MonetizationService:loadGamepasses(player)
 
@@ -116,6 +123,7 @@ function PlayerService:KnitInit()
 	self.MonetizationService = knit.GetService("MonetizationService")
 	self.BadgeService = knit.GetService("BadgeService")
 	self.PlotService = knit.GetService("PlotService")
+	self.TreadmillService = knit.GetService("TreadmillService")
 end
 
 function PlayerService:KnitStart()
