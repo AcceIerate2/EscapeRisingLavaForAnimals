@@ -8,6 +8,9 @@ local TweenService = game:GetService("TweenService")
 local Signal = require(ReplicatedStorage.src.Packages.Signal)
 local knit = require(ReplicatedStorage.src.Packages.knit)
 
+-- Utility
+local pitArea = require(ReplicatedStorage.src.utility.pitArea)
+
 -- Config
 local updateInterval = 0.1 -- seconds between depth bar refreshes
 local showOwnHeadshot = true -- TESTING: your own row shows your headshot instead of YOU
@@ -78,22 +81,7 @@ end
 -- Private Methods
 -- Depth below the rim as a fraction of the pit's depth, or nil when the position is outside the pit.
 function LavaHudController:getDepthFraction(map: Model, position: Vector3): number?
-	local cframe = map:GetAttribute("ReferenceCFrame")
-	local size = map:GetAttribute("ReferenceSize")
-	local depth = map:GetAttribute("Depth")
-	if not cframe or not size or not depth then
-		return nil
-	end
-
-	local point = cframe:PointToObjectSpace(position)
-	local below = size.Y / 2 - point.Y
-	-- Underground, the safe zone pockets reach past the pit's footprint into the walls.
-	local reach = if below > 2 then pocketReach else 0
-	local outside = math.abs(point.X) > size.X / 2 + reach or math.abs(point.Z) > size.Z / 2 + reach
-	if outside or below < -rimMargin or below > depth + 10 then
-		return nil
-	end
-	return math.clamp(below / depth, 0, 1)
+	return pitArea(map, position, rimMargin, pocketReach)
 end
 
 -- Slides a right-side menu on or off screen; it is only Visible while on screen or moving.
@@ -138,7 +126,7 @@ function LavaHudController:buildZones(map: Model)
 	zones:ClearAllChildren()
 
 	local depth = map:GetAttribute("Depth")
-	local zonePads = map:FindFirstChild("ZonePads")
+	local zonePads = workspace:FindFirstChild("Pads") -- the zone pads (built by hand, not by the map generator)
 	if not depth or not zonePads then
 		return
 	end
@@ -255,7 +243,7 @@ end
 
 function LavaHudController:update()
 	local map = workspace:FindFirstChild("GeneratedMap")
-	local zonePads = map and map:FindFirstChild("ZonePads")
+	local zonePads = workspace:FindFirstChild("Pads")
 	local zoneCount = zonePads and #zonePads:GetChildren() or 0
 	if map ~= self.Map or zoneCount ~= self.ZoneCount then
 		self.Map = map

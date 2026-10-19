@@ -93,7 +93,7 @@ end
 function RoutePlanner.PlanSafeZones(route, rng: Random)
 	local config = route.Config
 	local settings = config.SafeZone
-	local pocketTop = config.Headroom + settings.FloorThickness
+	local pocketTop = (settings.Height or config.Headroom) + settings.FloorThickness
 
 	route.SafeZones = {}
 	local previousPicks = {}

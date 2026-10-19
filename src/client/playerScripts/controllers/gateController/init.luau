@@ -6,9 +6,6 @@ local RunService = game:GetService("RunService")
 -- Packages
 local knit = require(ReplicatedStorage.src.Packages.knit)
 
--- Utility
-local Spring = require(ReplicatedStorage.src.utility.Spring)
-
 -- Config
 local gatesConfig = require(ReplicatedStorage.src.GameConfiguration.Gameplay.gatesConfig)
 
@@ -76,17 +73,10 @@ function GateController:makeGate(model: Model, left: Model, right: Model)
 		Right = self:makeLeaf(right, across),
 		Center = (leftBounds.Position + rightBounds.Position) * 0.5,
 		Normal = UP:Cross(across),
-		Direction = 0,
-		TargetAngle = 0,
-		SpringValue = Instance.new("NumberValue"),
+		Open = false,
+		Direction = 1, -- which way it swings: away from the side the player came from
+		Angle = 0,
 	}
-
-	-- Spring the angle so both leaves stay on their hinge arcs throughout the swing.
-	gate.SpringConnection = gate.SpringValue.Changed:Connect(function(angle: number)
-		self:poseLeaf(gate.Left, gate.Normal, angle)
-		self:poseLeaf(gate.Right, gate.Normal, angle)
-	end)
-
 	return gate
 end
 
@@ -117,10 +107,6 @@ function GateController:refreshGates(plots: Instance?)
 			continue
 		end
 
-		Spring.stop(gate.SpringValue)
-		gate.SpringConnection:Disconnect()
-		gate.SpringValue:Destroy()
-
 		for _, leaf in { gate.Left, gate.Right } do
 			if leaf.Model.Parent then
 				leaf.Model:PivotTo(leaf.ClosedPivot)
@@ -138,46 +124,48 @@ function GateController:refreshGates(plots: Instance?)
 	end
 end
 
+-- A gate opens fully while the player is within OpenDistance and closes once they're past
+-- CloseDistance. The swing side is picked fresh each time it opens - away from the side the player
+-- comes from - so coming back from the other side opens it the new way even mid-close.
 function GateController:updateTargets()
 	local character = self.Player.Character
 	local root = character and character:FindFirstChild("HumanoidRootPart")
 	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	local config = self.Config
 
 	for _, gate in pairs(self.Gates) do
 		if not root or not root:IsA("BasePart") or not humanoid or humanoid.Health <= 0 then
-			gate.Direction = 0
+			gate.Open = false
 			continue
 		end
 
 		local offset = root.Position - gate.Center
-		local flatOffset = horizontal(offset)
-		local distance = flatOffset.Magnitude
+		local distance = horizontal(offset).Magnitude
+		local inRange = math.abs(offset.Y) <= config.MaxHeightDifference
 
-		if math.abs(offset.Y) > self.Config.MaxHeightDifference or distance > self.Config.CloseDistance then
-			gate.Direction = 0
-		elseif gate.Direction == 0 and distance <= self.Config.OpenDistance then
-			local movement = horizontal(humanoid.MoveDirection)
-			local crossing = movement:Dot(gate.Normal)
-
-			-- Ignore players walking alongside the gate or away from it.
-			if math.abs(crossing) > 0.1 and movement:Dot(flatOffset) <= 0.1 then
-				gate.Direction = if crossing > 0 then 1 else -1
-			end
+		if not gate.Open and inRange and distance <= config.OpenDistance then
+			gate.Open = true
+			gate.Direction = if offset:Dot(gate.Normal) < 0 then 1 else -1
+		elseif gate.Open and (not inRange or distance > config.CloseDistance) then
+			gate.Open = false
 		end
 	end
 end
 
-function GateController:animateGates()
+-- Leaves swing at a steady speed toward fully open (on the chosen side) or shut.
+function GateController:animateGates(deltaTime: number)
+	local config = self.Config
+	local step = math.rad(config.SwingSpeed) * deltaTime
+
 	for _, gate in pairs(self.Gates) do
-		local target = math.rad(self.Config.OpenAngle) * gate.Direction
-		if gate.TargetAngle == target then
+		local target = if gate.Open then math.rad(config.OpenAngle) * gate.Direction else 0
+		if gate.Angle == target then
 			continue
 		end
 
-		gate.TargetAngle = target
-		Spring.target(gate.SpringValue, self.Config.SpringDamping, self.Config.SpringFrequency, {
-			Value = target,
-		})
+		gate.Angle += math.clamp(target - gate.Angle, -step, step)
+		self:poseLeaf(gate.Left, gate.Normal, gate.Angle)
+		self:poseLeaf(gate.Right, gate.Normal, gate.Angle)
 	end
 end
 
@@ -193,10 +181,10 @@ function GateController:KnitStart()
 
 			-- Also discovers plots and gates added later or streamed into the client.
 			self:refreshGates(workspace:FindFirstChild("Plots"))
-			self:updateTargets()
 		end
 
-		self:animateGates()
+		self:updateTargets()
+		self:animateGates(deltaTime)
 	end)
 end
 

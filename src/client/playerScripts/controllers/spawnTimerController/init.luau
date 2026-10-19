@@ -61,8 +61,19 @@ end
 
 -- Attaches the billboard to the top pad, waiting for the map to load (and stream in).
 function SpawnTimerController:attach()
-	local map = workspace:WaitForChild("GeneratedMap")
-	local zone = map:WaitForChild("ZonePads"):WaitForChild("Zone1")
+	-- The top pad is the zone pad with ZoneIndex 1 in workspace.Pads.
+	local pads = workspace:WaitForChild("Pads")
+	local zone
+	repeat
+		for _, model in pads:GetChildren() do
+			if model:GetAttribute("ZoneIndex") == 1 then
+				zone = model
+			end
+		end
+		if not zone then
+			task.wait(0.5)
+		end
+	until zone
 	local platform = zone:WaitForChild("Platform")
 	self.Gui.Adornee = platform
 	self.Gui.StudsOffsetWorldSpace = Vector3.new(0, spawnTimerConfig.Height, 0)

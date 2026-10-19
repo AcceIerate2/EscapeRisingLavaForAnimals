@@ -29,6 +29,13 @@ local function failed(message: string)
 	}
 end
 
+-- The marker's bottom face is the ground; models whose pivot isn't at their base are lifted by the gap.
+local function standOnMarker(model: Model, marker: BasePart)
+	local box, size = model:GetBoundingBox()
+	local lift = model:GetPivot().Y - (box.Y - size.Y / 2)
+	model:PivotTo(marker.CFrame * CFrame.new(0, -marker.Size.Y / 2 + lift, 0))
+end
+
 -->
 -- Each player's treadmill sits on their plot (at the plot's TreadmillCFrame) once they unlock it with
 -- cash; the plot's TreadmillLevel attribute tells every client what to show on its sign. The client says when
@@ -163,6 +170,19 @@ function TreadmillService:Upgrade(player: Player)
 end
 
 -- Private Methods
+-- Where the first treadmill's belt sits when it stands on this marker; every level lines up its belt here.
+function TreadmillService:referenceBelt(marker: BasePart): Vector3?
+	local asset = treadmillAssets:FindFirstChild(treadmillConfig.Levels[1].Model)
+	if not asset then
+		return nil
+	end
+	local probe = asset:Clone()
+	standOnMarker(probe, marker)
+	local belt = treadmillConfig.GetBelt(probe)
+	probe:Destroy()
+	return belt and belt.Position
+end
+
 function TreadmillService:setLevel(player: Player, level: number)
 	self.DataService:GetValueObject(player, "TreadmillLevel"):Set(level)
 	self:place(player)
@@ -228,11 +248,14 @@ function TreadmillService:place(player: Player)
 			part.CanTouch = false
 		end
 	end
-	-- The marker's bottom face is the ground the treadmill stands on; models whose pivot isn't at
-	-- their base are lifted by the gap so they never float or sink.
-	local box, size = treadmill:GetBoundingBox()
-	local lift = treadmill:GetPivot().Y - (box.Y - size.Y / 2)
-	treadmill:PivotTo(marker.CFrame * CFrame.new(0, -marker.Size.Y / 2 + lift, 0))
+	-- Every model's belt is put exactly where the first treadmill's belt is, so upgrading never moves
+	-- the runner (the models' bodies differ a little, their belts don't).
+	local beltSpot = self:referenceBelt(marker)
+	standOnMarker(treadmill, marker)
+	local belt = treadmillConfig.GetBelt(treadmill)
+	if belt and beltSpot then
+		treadmill:PivotTo(treadmill:GetPivot() + (beltSpot - belt.Position))
+	end
 
 	local old = self.Treadmills[player]
 	self.Treadmills[player] = treadmill
@@ -264,7 +287,7 @@ function TreadmillService:step(player: Player, training, deltaTime: number)
 	training.StepElapsed += deltaTime
 	if training.StepElapsed >= data.StepTime then
 		training.StepElapsed -= data.StepTime
-		-- Boost and the equipped trail multiply each other: x3 boost with a x2 trail = x6.
+		-- Boost and the equipped trail multiply each other: x2 boost with a x2 trail = x4.
 		local multiplier = (if training.BoostedUntil and now < training.BoostedUntil then boost.Multiplier else 1)
 			* self.TrailService:GetSpeedMultiplier(player)
 		local speed = self.DataService:GetValueObject(player, "Speed")

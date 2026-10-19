@@ -29,10 +29,11 @@ local styles = {
 }
 
 -->
+-- The HUD's Slow Mode switch: while it's on, WalkSpeedService caps the player's WalkSpeed.
 local SlowModeController = knit.CreateController({
 	Name = "SlowModeController",
 	IsEnabled = false,
-	Changed = Signal.new(), -- (isEnabled: boolean) hook the actual slow-mode behaviour here later
+	Changed = Signal.new(), -- (isEnabled: boolean)
 })
 
 -- Public Methods
@@ -47,6 +48,7 @@ function SlowModeController:SetEnabled(isEnabled: boolean)
 
 	self.IsEnabled = isEnabled
 	self:render(true)
+	self.WalkSpeedService:SetSlowMode(isEnabled):catch(warn)
 	self.Changed:Fire(isEnabled)
 end
 
@@ -76,6 +78,10 @@ function SlowModeController:render(animate: boolean)
 end
 
 -- LifeCycle
+function SlowModeController:KnitInit()
+	self.WalkSpeedService = knit.GetService("WalkSpeedService")
+end
+
 function SlowModeController:KnitStart()
 	task.spawn(function()
 		local hud = Players.LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("Hud")

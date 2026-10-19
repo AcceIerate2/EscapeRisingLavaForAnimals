@@ -22,7 +22,7 @@ Config.FloorThickness = 2 -- floor at the very bottom of the pit
 -- Route: one ramp per wall, four ramps per lap (template)
 Config.RampWidth = 18 -- (template) corridor width; corner landings are RampWidth x RampWidth
 Config.RampRise = 25 -- (template) height changed along each wall; one lap = 4 * RampRise
-Config.Headroom = 36 -- floor-to-ceiling height of the corridor (template: 20.5)
+Config.Headroom = 44 -- floor-to-ceiling height of the corridor (template: 20.5)
 Config.CircuitCount = 18 -- laps; the pit is CircuitCount * 4 * RampRise deep
 Config.MaxSlope = 35 -- degrees, validation limit (template ramps are ~22.6)
 
@@ -30,6 +30,7 @@ Config.MaxSlope = 35 -- degrees, validation limit (template ramps are ~22.6)
 -- Zone 1 is the shallowest. Deeper zones are smaller pads (a wider jump) and further apart: zones 1
 -- and 2 are ZoneFirstSpacing apart, each gap after that grows by the same ratio, and the last pad
 -- lands one lap above the pit floor. Depths snap to RampRise, so every pad is level with a landing.
+Config.BuildZonePads = false -- the zone pads are hand-built in Workspace.Pads (set true to generate them instead)
 Config.ZoneCount = 8
 Config.ZoneFirstDepth = 100 -- below the rim
 Config.ZoneFirstSpacing = 100
@@ -67,10 +68,11 @@ Config.SafeZone = {
 	PerLap = 1, -- corners per lap that get one (seeded; never the same corner as the lap below)
 	Depth = 12, -- how far the walls are pushed out (the safe zone's width)
 	Extent = 12, -- how far it carries on along each wall past the landing
+	Height = 36, -- floor-to-ceiling height of the pocket (kept lower than the corridor's Headroom)
 	FloorThickness = 2,
 	WallThickness = 2, -- the new walls behind it
 	MinCover = 20, -- keep it at least this far below the rim, clear of the ground around the pit
-	Color = rgb(70, 190, 60),
+	Color = rgb(29, 74, 24),
 	Decoration = "SafeZoneDeco", -- model in ServerStorage[AssetFolder] copied into every safe zone
 }
 

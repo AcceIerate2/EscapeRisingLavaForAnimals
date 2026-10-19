@@ -61,10 +61,14 @@ function MapGenerator.Generate(overrides: { [string]: any }?)
 	ShaftGenerator.Build(builder, route, reference)
 	SafeZoneGenerator.Build(builder, route)
 	RampGenerator.Build(builder, route)
-	local topZone = PlatformGenerator.BuildTopPad(builder, route)
+	-- Zone pads are hand-built in Workspace.Pads now; BuildZonePads = true brings the generated ones back.
+	local topZone, zones = nil, {}
+	if config.BuildZonePads then
+		topZone = PlatformGenerator.BuildTopPad(builder, route)
+		zones = PlatformGenerator.Build(builder, route)
+	end
 	builder.TopPad = topZone and topZone.Model
 	builder.TopZone = topZone
-	local zones = PlatformGenerator.Build(builder, route)
 	local allZones = table.clone(zones)
 	if topZone then
 		table.insert(allZones, 1, topZone)

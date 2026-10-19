@@ -11,12 +11,14 @@ local musicConfig = require(ReplicatedStorage.src.GameConfiguration.General.musi
 
 -->
 -- Background tracks play in order on a loop. While the player is in the pit they pause and the pit
--- music loops instead; leaving the pit resumes the background track where it stopped.
+-- music loops instead; leaving the pit resumes the background track where it stopped. At night the
+-- night track plays over both. Everything here plays through the Music volume (settings + button).
 local MusicController = knit.CreateController({
 	Name = "MusicController",
 	Config = musicConfig,
 	VolumeScale = 1, -- 0 when muted with the topbar button
 	IsInPit = false,
+	IsNight = false,
 	TrackIndex = 1,
 	Tweens = {},
 })
@@ -24,48 +26,71 @@ local MusicController = knit.CreateController({
 -- Public Methods
 function MusicController:AdjustVolume(number: number)
 	self.VolumeScale = number
-	self:fade(self:getActiveSound(), self:getTargetVolume(), 0.5)
+	local sound = self:getActiveSound()
+	self:fade(sound, self:getTargetVolume(sound), 0.5)
+end
+
+-- At night the night track plays instead of whatever was playing; morning brings that back.
+function MusicController:SetNight(isNight: boolean)
+	if self.IsNight == isNight then
+		return
+	end
+	self:switchTo(function()
+		self.IsNight = isNight
+	end)
 end
 
 function MusicController:SetInPit(isInPit: boolean)
 	if self.IsInPit == isInPit then
 		return
 	end
-
-	self.IsInPit = isInPit
-	local fadeTime = self.Config.FadeTime
-	local background = self.Config.SoundTracks[self.TrackIndex]
-	local pit = self.Config.PitTrack
-
-	if isInPit then
-		self:fade(background, 0, fadeTime, function()
-			background:Pause()
-		end)
-		pit.Volume = 0
-		pit.TimePosition = 0
-		pit:Play()
-		self:fade(pit, self:getTargetVolume(), fadeTime)
-	else
-		self:fade(pit, 0, fadeTime, function()
-			pit:Stop()
-		end)
-		background.Volume = 0
-		if background.TimePosition > 0 then
-			background:Resume()
-		else
-			background:Play()
-		end
-		self:fade(background, self:getTargetVolume(), fadeTime)
-	end
+	self:switchTo(function()
+		self.IsInPit = isInPit
+	end)
 end
 
 -- Private Methods
-function MusicController:getTargetVolume(): number
-	return self.Config.DefaultVolume * self.VolumeScale
+-- Volume for a track: the default, the music button, and the track's own boost (if any).
+function MusicController:getTargetVolume(sound: Sound?): number
+	local boost = if sound == self.Config.NightTrack then self.Config.NightVolumeBoost else 1
+	return self.Config.DefaultVolume * self.VolumeScale * boost
 end
 
 function MusicController:getActiveSound(): Sound
+	if self.IsNight then
+		return self.Config.NightTrack
+	end
 	return if self.IsInPit then self.Config.PitTrack else self.Config.SoundTracks[self.TrackIndex]
+end
+
+-- Cross-fades from the sound playing now to the one playing after `change` updates the state.
+-- The background tracks pause (and resume where they stopped); the pit and night tracks restart.
+function MusicController:switchTo(change: () -> ())
+	local fadeTime = self.Config.FadeTime
+	local from = self:getActiveSound()
+	change()
+	local to = self:getActiveSound()
+	if from == to then
+		return
+	end
+
+	local isBackground = table.find(self.Config.SoundTracks, from) ~= nil
+	self:fade(from, 0, fadeTime, function()
+		if isBackground then
+			from:Pause()
+		else
+			from:Stop()
+		end
+	end)
+
+	to.Volume = 0
+	if table.find(self.Config.SoundTracks, to) and to.TimePosition > 0 then
+		to:Resume()
+	else
+		to.TimePosition = 0
+		to:Play()
+	end
+	self:fade(to, self:getTargetVolume(to), fadeTime)
 end
 
 -- Tweens a sound's volume, replacing any fade already running on it.
@@ -88,7 +113,7 @@ end
 function MusicController:playBackgroundTrack(index: number)
 	self.TrackIndex = index
 	local sound = self.Config.SoundTracks[index]
-	sound.Volume = self:getTargetVolume()
+	sound.Volume = self:getTargetVolume(sound)
 	sound.TimePosition = 0
 	sound:Play()
 end
@@ -126,12 +151,13 @@ function MusicController:KnitInit()
 	for index, sound: Sound in ipairs(tracks) do
 		sound.Looped = false
 		sound.Ended:Connect(function()
-			if not self.IsInPit and self.TrackIndex == index then
+			if not self.IsInPit and not self.IsNight and self.TrackIndex == index then
 				self:playBackgroundTrack(index % #tracks + 1)
 			end
 		end)
 	end
 	self.Config.PitTrack.Looped = true
+	self.Config.NightTrack.Looped = true
 	self:playBackgroundTrack(1)
 end
 

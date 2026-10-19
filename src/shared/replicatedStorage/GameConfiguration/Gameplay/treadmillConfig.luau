@@ -76,7 +76,7 @@ TreadmillConfig.MaxLevel = #TreadmillConfig.Levels
 -- The boost button pops up while running; clicking it multiplies Speed gain for a moment.
 TreadmillConfig.Boost = {
 	Interval = 3, -- seconds of running after a boost is clicked before the next button pops up
-	Multiplier = 3, -- Speed gain multiplier while boosted
+	Multiplier = 2, -- Speed gain multiplier while boosted
 	Duration = 1, -- seconds a boost lasts
 
 	-- Click feedback (all instant, before the server answers).
@@ -92,6 +92,7 @@ TreadmillConfig.Placement = {
 	-- (negative = left), Z = behind them (negative = in front).
 	LeaveOffset = Vector3.new(-7, 0, 0),
 	RejoinDelay = 1.25, -- seconds before stepping back in starts running again
+	JumpBackDelay = 0.4, -- seconds after getting off before jumping works again (so the jump that got you off doesn't fire)
 	MaxServerDistance = 15, -- studs from the belt the server still accepts training from
 }
 
@@ -116,7 +117,21 @@ TreadmillConfig.RunSound = {
 	FadeOut = 0.2, -- seconds it fades out when you get off
 }
 
-TreadmillConfig.BoostVfx = "TreadmillBoost" -- in ReplicatedStorage.Assets.Vfx, emitted on the runner's root
+-- The aura on the runner's body when they click a boost: a character model in ReplicatedStorage.Assets.Vfx
+-- whose limbs (R6 names) hold the effects; each limb's effects go on the same limb of the player.
+TreadmillConfig.BoostAura = {
+	Model = "DiamondBoost",
+	Duration = 1, -- seconds the aura stays on (its particles then fade out on their own)
+	BeamFadeTime = 0.5, -- seconds its beams take to fade out after that
+	-- R6 limb -> the R15 part it goes on, for R15 bodies.
+	R15Limbs = {
+		Torso = "UpperTorso",
+		["Left Arm"] = "LeftLowerArm",
+		["Right Arm"] = "RightLowerArm",
+		["Left Leg"] = "LeftLowerLeg",
+		["Right Leg"] = "RightLowerLeg",
+	},
+}
 
 -- "+Speed" popups that fly out of the runner every step (ReplicatedStorage.Assets.Gui.SpeedPopup).
 TreadmillConfig.Popup = {

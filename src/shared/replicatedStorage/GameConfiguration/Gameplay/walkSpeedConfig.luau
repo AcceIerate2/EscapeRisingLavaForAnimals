@@ -10,12 +10,13 @@ local WalkSpeedConfig = {}
 	(Trails don't change WalkSpeed; they multiply treadmill Speed gains instead.)
 
 	With the values below:
-	  Speed 0 → 16 · 100 → ~28 · 1K → ~38 · 10K → ~46 · 1M → ~55 · 1B → ~62 · cap 80
+	  Speed 0 → 26 · 100 → ~38 · 1K → ~48 · 10K → ~56 · 1M → ~65 · 1B → ~72 · cap 90
 ]]
-WalkSpeedConfig.Base = 16 -- WalkSpeed at 0 Speed
+WalkSpeedConfig.Base = 26 -- WalkSpeed at 0 Speed
 WalkSpeedConfig.MaxBonus = 64 -- most WalkSpeed Speed can ever add
 WalkSpeedConfig.Start = 25 -- Speed around which the curve starts to bend
 WalkSpeedConfig.HalfDecades = 3 -- 10x steps of Speed (past Start) to reach half of MaxBonus
+WalkSpeedConfig.SlowModeSpeed = 26 -- WalkSpeed is capped at this while Slow Mode is on
 
 function WalkSpeedConfig.ToWalkSpeed(speed: number): number
 	local decades = math.log10(1 + math.max(speed, 0) / WalkSpeedConfig.Start)

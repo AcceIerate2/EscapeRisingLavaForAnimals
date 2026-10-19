@@ -75,7 +75,10 @@ function RebirthService:Rebirth(player: Player)
 	end
 
 	self:grantRebirth(player, false)
-	return notify(`Rebirthed! You now earn <font color="rgb(89,255,31)">x{self:GetCashMultiplier(player)}</font> money.`, true)
+	return notify(
+		`Rebirthed! You now earn <font color="rgb(89,255,31)">x{self:GetCashMultiplier(player)}</font> money.`,
+		true
+	)
 end
 
 -- Private Methods

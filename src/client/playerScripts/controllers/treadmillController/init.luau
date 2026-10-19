@@ -1,4 +1,5 @@
 -- Roblox Services
+local ContextActionService = game:GetService("ContextActionService")
 local Debris = game:GetService("Debris")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -91,10 +92,10 @@ function TreadmillController:ClaimBoost(token: string)
 	self:kickFov()
 	self.HapticController:Shake(Enum.HapticEffectType.UINotification)
 	self:playSound(treadmillConfig.Sounds.Boost)
-	local _, root = self:getCharacter()
-	local vfx = assets:WaitForChild("Vfx"):FindFirstChild(treadmillConfig.BoostVfx)
-	if root and vfx then
-		self:emitVfx(vfx, root)
+	local character = self:getCharacter()
+	local aura = assets:WaitForChild("Vfx"):FindFirstChild(treadmillConfig.BoostAura.Model)
+	if character and aura then
+		self:playAura(aura, character)
 	end
 
 	task.spawn(self.removeBoostButton, self, token, true)
@@ -190,6 +191,11 @@ function TreadmillController:stopRunSound()
 	fade:Play()
 end
 
+-- Where the runner stands on a belt.
+function TreadmillController:runnerCFrame(belt: CFrame, root: BasePart, humanoid: Humanoid): CFrame
+	return belt * CFrame.new(0, humanoid.HipHeight + root.Size.Y / 2, -1.5)
+end
+
 function TreadmillController:enter(treadmill: Model)
 	local character, root, humanoid = self:getCharacter()
 	local belt = treadmillConfig.GetBelt(treadmill)
@@ -206,8 +212,7 @@ function TreadmillController:enter(treadmill: Model)
 	end
 
 	-- Held on the belt by constraints (not anchoring) so other players see us there too.
-	local height = humanoid.HipHeight + root.Size.Y / 2
-	local target = belt * CFrame.new(0, height, 0)
+	local target = self:runnerCFrame(belt, root, humanoid)
 	local attachment = Instance.new("Attachment")
 	attachment.Name = "TreadmillAttachment"
 	attachment.Parent = root
@@ -250,7 +255,17 @@ function TreadmillController:enter(treadmill: Model)
 	self:startRunSound()
 	self:setAnimationSpeed()
 
-	-- Jumping gets you off (works for keyboard, gamepad and the touch jump button).
+	-- Jumping gets you off without actually jumping, like the Stop button: the jump input is taken
+	-- over while running (keyboard/gamepad), and the touch jump button (which sets Humanoid.Jump
+	-- directly) is caught by the Jump listener below. The Jumping state stays on so the mobile jump
+	-- button doesn't hide.
+	self.JumpHumanoid = humanoid
+	ContextActionService:BindActionAtPriority("TreadmillJump", function(_, inputState)
+		if inputState == Enum.UserInputState.Begin then
+			self:Stop()
+		end
+		return Enum.ContextActionResult.Sink
+	end, false, Enum.ContextActionPriority.High.Value, Enum.PlayerActions.CharacterJump)
 	table.insert(
 		self.RunConnections,
 		humanoid:GetPropertyChangedSignal("Jump"):Connect(function()
@@ -283,6 +298,22 @@ function TreadmillController:leave(teleport: boolean)
 		self:removeBoostButton(token, false)
 	end
 	self.Gui.Stop.Visible = false
+
+	-- The jump that got them off (and a held jump button) is cancelled until JumpBackDelay has passed.
+	ContextActionService:UnbindAction("TreadmillJump")
+	local jumpHumanoid = self.JumpHumanoid
+	self.JumpHumanoid = nil
+	if jumpHumanoid then
+		jumpHumanoid.Jump = false
+		local cancelJump = jumpHumanoid:GetPropertyChangedSignal("Jump"):Connect(function()
+			if jumpHumanoid.Jump then
+				jumpHumanoid.Jump = false
+			end
+		end)
+		task.delay(treadmillConfig.Placement.JumpBackDelay, function()
+			cancelJump:Disconnect()
+		end)
+	end
 
 	if self.Track then
 		self.Track:Stop(0.15)
@@ -410,9 +441,10 @@ function TreadmillController:kickFov()
 	local base = self.FovBase
 	local out = TweenService:Create(camera, TweenInfo.new(0.08, Enum.EasingStyle.Quad), { FieldOfView = base + kick })
 	out.Completed:Once(function()
-		local back = TweenService:Create(camera, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
-			FieldOfView = base,
-		})
+		local back =
+			TweenService:Create(camera, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+				FieldOfView = base,
+			})
 		back.Completed:Once(function(state)
 			if state == Enum.PlaybackState.Completed then
 				self.FovBase = nil
@@ -438,29 +470,82 @@ function TreadmillController:playSound(path: string?)
 	end
 end
 
--- Emits every ParticleEmitter in the effect (EmitCount / EmitDelay attributes) from the root.
-function TreadmillController:emitVfx(vfx: Instance, root: BasePart)
-	local holder = Instance.new("Attachment")
-	holder.Name = "TreadmillBoostVfx"
-	for _, emitter in vfx:GetDescendants() do
-		if emitter:IsA("ParticleEmitter") then
-			emitter:Clone().Parent = holder
+-- The boost aura: the effect is a character whose limbs hold the particles and beams, so each limb's
+-- effects go onto the same limb of the player (R15 bodies use the matching part). Emitters with an
+-- EmitCount attribute also burst once (after EmitDelay); everything switches off after Duration.
+function TreadmillController:playAura(vfx: Instance, character: Model)
+	local settings = treadmillConfig.BoostAura
+	local added = {}
+	for _, limb in vfx:GetChildren() do
+		local target = limb:IsA("BasePart") and (character:FindFirstChild(limb.Name) or character:FindFirstChild(settings.R15Limbs[limb.Name] or ""))
+		if not target then
+			continue
+		end
+		-- Cloned as one piece so the beams keep pointing at their own (cloned) attachments.
+		for _, effect in limb:Clone():GetChildren() do
+			if effect:IsA("ParticleEmitter") or effect:IsA("Attachment") or effect:IsA("Beam") or effect:IsA("Light") then
+				effect.Parent = target
+				table.insert(added, effect)
+			end
 		end
 	end
-	holder.Parent = root
+
+	local function forEachEffect(callback)
+		for _, effect in added do
+			for _, item in { effect, table.unpack(effect:GetDescendants()) } do
+				if item:IsA("ParticleEmitter") or item:IsA("Beam") or item:IsA("Light") then
+					callback(item)
+				end
+			end
+		end
+	end
 
 	local longest = 0
-	for _, emitter in holder:GetChildren() do
-		local count = emitter:GetAttribute("EmitCount") or 10
-		local delay = emitter:GetAttribute("EmitDelay") or 0
-		longest = math.max(longest, delay + emitter.Lifetime.Max)
-		task.delay(delay, function()
-			if emitter.Parent then
-				emitter:Emit(count)
+	forEachEffect(function(effect)
+		if not effect:IsA("ParticleEmitter") then
+			return
+		end
+		longest = math.max(longest, effect.Lifetime.Max)
+		local count = effect:GetAttribute("EmitCount")
+		if count and count > 0 then
+			task.delay(effect:GetAttribute("EmitDelay") or 0, function()
+				if effect.Parent then
+					effect:Emit(count)
+				end
+			end)
+		end
+	end)
+
+	task.delay(settings.Duration, function()
+		local beams = {}
+		forEachEffect(function(effect)
+			if effect:IsA("Beam") then
+				table.insert(beams, { Beam = effect, Keypoints = effect.Transparency.Keypoints })
+			else
+				effect.Enabled = false
 			end
 		end)
-	end
-	Debris:AddItem(holder, longest + 0.5)
+		for _, effect in added do
+			Debris:AddItem(effect, math.max(longest, settings.BeamFadeTime) + 0.5)
+		end
+
+		-- Beams fade out instead of switching off (their Transparency is a sequence, so it can't be tweened).
+		local elapsed = 0
+		while elapsed < settings.BeamFadeTime do
+			elapsed += task.wait()
+			local alpha = TweenService:GetValue(math.min(elapsed / settings.BeamFadeTime, 1), Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+			for _, fading in beams do
+				local keypoints = {}
+				for index, keypoint in fading.Keypoints do
+					keypoints[index] = NumberSequenceKeypoint.new(keypoint.Time, keypoint.Value + (1 - keypoint.Value) * alpha, keypoint.Envelope)
+				end
+				fading.Beam.Transparency = NumberSequence.new(keypoints)
+			end
+		end
+		for _, fading in beams do
+			fading.Beam.Enabled = false
+		end
+	end)
 end
 
 -- A "+Speed" billboard that flies out of the runner in a random direction and fades.
@@ -491,7 +576,11 @@ function TreadmillController:popup(amount: number)
 	local lifetime = settings.Lifetime
 	-- Flies out over the first half; over the second half it drops down while fading, and is only
 	-- removed once fully invisible.
-	local rise = TweenService:Create(gui, TweenInfo.new(lifetime * 0.5, Enum.EasingStyle.Quad), { StudsOffsetWorldSpace = target })
+	local rise = TweenService:Create(
+		gui,
+		TweenInfo.new(lifetime * 0.5, Enum.EasingStyle.Quad),
+		{ StudsOffsetWorldSpace = target }
+	)
 	rise.Completed:Once(function()
 		TweenService:Create(gui, TweenInfo.new(lifetime * 0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
 			StudsOffsetWorldSpace = target - Vector3.new(0, settings.Drop, 0),
@@ -499,7 +588,8 @@ function TreadmillController:popup(amount: number)
 	end)
 	rise:Play()
 	TweenService:Create(gui, TweenInfo.new(lifetime * 0.3, Enum.EasingStyle.Back), { Size = size }):Play()
-	local fade = TweenInfo.new(lifetime * 0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, lifetime * 0.5)
+	local fade =
+		TweenInfo.new(lifetime * 0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, lifetime * 0.5)
 	local group = gui.Group
 	TweenService:Create(group.Amount, fade, { TextTransparency = 1 }):Play()
 	TweenService:Create(group.Icon, fade, { ImageTransparency = 1 }):Play()
@@ -642,17 +732,14 @@ function TreadmillController:onTreadmillAdded(treadmill: Model, upgraded: boolea
 		return
 	end
 
+	-- The runner's position is set once when they step on and isn't tied to the model (the server
+	-- lines every model's belt up in the same spot), so the new treadmill can pop in freely.
 	treadmill:ScaleTo(0.8)
 	Spring.target(treadmill, 0.45, 5, { Scale = 1 })
+
 	-- Upgrades bought with Robux don't go through RequestUpgrade, so their sound plays here.
 	if os.clock() - (self.UpgradeSoundAt or 0) > 2 then
 		self:playSound(treadmillConfig.Sounds.Upgrade)
-	end
-
-	-- Keep running on the new belt: watch() puts the player straight back on.
-	if self.Running then
-		self:leave(false)
-		self.BlockedUntil = 0
 	end
 end
 
@@ -678,7 +765,10 @@ function TreadmillController:syncOtherTreadmills()
 		if sign then
 			localHide.Set(sign, not running)
 		end
-		if self.Signs[plot] and self.Signs[plot].Gui.Enabled ~= (running and plot:GetAttribute("OwnerUserId") ~= nil) then
+		if
+			self.Signs[plot]
+			and self.Signs[plot].Gui.Enabled ~= (running and plot:GetAttribute("OwnerUserId") ~= nil)
+		then
 			self:refreshSign(plot)
 		end
 	end

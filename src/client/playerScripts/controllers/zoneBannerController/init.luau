@@ -7,7 +7,7 @@ local TweenService = game:GetService("TweenService")
 local knit = require(ReplicatedStorage.src.Packages.knit)
 
 -- Config
-local holdTime = 2.5 -- seconds the banner stays up
+local holdTime = 1.25 -- seconds the banner stays up
 local popTweenInfo = TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
 local fadeTweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
 

@@ -5,23 +5,41 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 -- Packages
 local knit = require(ReplicatedStorage.src.Packages.knit)
 
+-- Utility
+local TypeCheck = require(ReplicatedStorage.src.utility.TypeCheck)
+
 -- Config
 local walkSpeedConfig = require(ReplicatedStorage.src.GameConfiguration.Gameplay.walkSpeedConfig)
 
 -->
 -- Sets each player's Humanoid.WalkSpeed from their Speed stat (through walkSpeedConfig's curve), and
--- keeps it updated as Speed changes (treadmill, rebirths, rewards...).
+-- keeps it updated as Speed changes (treadmill, rebirths, rewards...). Slow Mode (the HUD switch) caps it
+-- at walkSpeedConfig.SlowModeSpeed.
 local WalkSpeedService = knit.CreateService({
 	Name = "WalkSpeedService",
 	Client = {},
 	Config = walkSpeedConfig,
 	Connections = {}, -- [player] = RBXScriptConnection on their Speed value
+	SlowMode = {}, -- [player] = true while their Slow Mode is on
 })
+
+-- Client Methods
+function WalkSpeedService.Client:SetSlowMode(player: Player, isEnabled: boolean)
+	if not TypeCheck.boolean(isEnabled) then
+		return
+	end
+	self.Server.SlowMode[player] = isEnabled or nil
+	self.Server:Refresh(player)
+end
 
 -- Public Methods
 function WalkSpeedService:GetWalkSpeed(player: Player): number
 	local speed = self.DataService:GetValue(player, "Speed") or 0
-	return walkSpeedConfig.ToWalkSpeed(speed)
+	local walkSpeed = walkSpeedConfig.ToWalkSpeed(speed)
+	if self.SlowMode[player] then
+		return math.min(walkSpeed, walkSpeedConfig.SlowModeSpeed)
+	end
+	return walkSpeed
 end
 
 function WalkSpeedService:Refresh(player: Player)
@@ -62,6 +80,7 @@ function WalkSpeedService:KnitStart()
 	Players.PlayerRemoving:Connect(function(player: Player)
 		local connection = self.Connections[player]
 		self.Connections[player] = nil
+		self.SlowMode[player] = nil
 		if connection then
 			connection:Disconnect()
 		end

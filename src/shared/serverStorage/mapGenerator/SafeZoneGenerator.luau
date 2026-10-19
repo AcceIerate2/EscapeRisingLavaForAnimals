@@ -37,7 +37,7 @@ function SafeZoneGenerator.Layout(config, zone)
 	local settings = config.SafeZone
 	local W, D, E = config.RampWidth, settings.Depth, settings.Extent
 	local t, bt = settings.FloorThickness, settings.WallThickness
-	local h, P = zone.Height, config.Headroom
+	local h, P = zone.Height, settings.Height or config.Headroom
 	local u, v = -zone.Side.Inward, -zone.Previous.Inward -- toward this corner's wall, toward the previous wall
 	local c = zone.Side.Corner
 	local face, back = W / 2, W / 2 + D -- the old wall face and the new one, measured from the corner centre
